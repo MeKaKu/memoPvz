@@ -14,12 +14,14 @@ public class SunManager : MonoBehaviour
     public Transform sunCollection;//太阳被收集的位置
     float nextSpawnTime;//下一次生成太阳的时间
 
-    public int sunNum{get;private set;}//当前的阳光值
+    public static int sunNum{get;private set;}//当前的阳光值
     public Text sunNumText;
     #endregion
 
     private void Start() {
+        sunNum = 0;
         nextSpawnTime = Time.time + interval;
+        sunNumText.text = sunNum.ToString();
     }
 
     private void Update() {
