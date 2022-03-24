@@ -9,9 +9,8 @@ public class CardManager : MonoBehaviour
     public Card cardPrefab;//卡片预制体
     public Transform cardBar;//卡片存放的位置
 
-    Card chosenCard;//当前被选中的卡片
+    public Card chosenCard;//当前被选中的卡片
     public ChosePlantPlane chosePlantPlane;//悬浮显示选中的植物
-    ImageLibrary imageLibrary;//图片库
     void Start(){
         GenerateCards();
     }
@@ -27,17 +26,17 @@ public class CardManager : MonoBehaviour
     }
 
     void GenerateCards(){
-        imageLibrary = GetComponent<ImageLibrary>();
         foreach(var cardId in cardIds){
             Card card = Instantiate<Card>(cardPrefab, cardBar);
-            card.cardSprite = imageLibrary.GetSprite(cardId);
+            card.assetId = cardId;
+            //card.cardSprite = LocalData.instance.GetPlantArticle(cardId).cardSprite;
             card.onPointerEnter += OnCardPointerEnter;
             card.onPointerDown += OnCardPointerDown;
         }
     }
     void DoChooseCard(Card _card){
         chosenCard = _card;
-        chosePlantPlane.ShowPlant(_card.plantSprite);
+        chosePlantPlane.ShowPlant(_card.assetId);
     }
     void UndoChooseCard(Card _card){
         chosePlantPlane.Hide();

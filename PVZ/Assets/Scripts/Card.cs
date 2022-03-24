@@ -7,6 +7,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Image))]
 public class Card : BaseUI, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    public AssetId assetId = AssetId.None;
     Image image;//显示的图片
     CDMask cdMask;//cd遮罩
     public bool isSunEnough;//阳光是否足够
@@ -14,8 +15,6 @@ public class Card : BaseUI, IPointerEnterHandler, IPointerExitHandler, IPointerD
     public bool isCD{get;private set;}//是否正在CD
     public bool isChosen;//是否被选中
     public int sunCost;//需要花费的阳光
-    public Sprite cardSprite;//卡片的贴图
-    public Sprite plantSprite;//植物的贴图
     public Text infoText;//鼠标悬停的提示信息
     public Texture2D cursorTex;//光标
 
@@ -34,7 +33,7 @@ public class Card : BaseUI, IPointerEnterHandler, IPointerExitHandler, IPointerD
         };
     }
     private void Start() {
-        image.sprite = cardSprite;
+        image.sprite = LocalData.instance.GetPlantArticle(assetId).cardSprite;
     }
 
     public void OnPointerDown(PointerEventData eventData)

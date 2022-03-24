@@ -38,7 +38,7 @@ public class SunManager : MonoBehaviour
         }
     }
 
-    public void SpawnSun(Vector2 spawnPos, float toPosY){
+    public void SpawnSun(Vector2 spawnPos, float toPosY, float fallSpeed = .9f, float spawnTime = 0.1f){
         //获取太阳
         GameObject sunObject = GetSunObject();
         //设置太阳生成的位置
@@ -48,7 +48,9 @@ public class SunManager : MonoBehaviour
         Sun sun = sunObject.GetComponent<Sun>();
         sun.InitSun();
         sun.toPosY = toPosY;
-        sun.StartFall();
+        sun.spawnTime = spawnTime;
+        sun.fallSpeed = fallSpeed;
+        sun.StartSpawn();
     }
 
     GameObject GetSunObject(){

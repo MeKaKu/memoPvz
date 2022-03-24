@@ -10,7 +10,7 @@ public class Sun : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPo
     public bool isSpawning{get;private set;}//是否正在生成
     public float spawnTime = .5f;//生成时间
     private float spawnPercnt;//生成的进度百分比
-    private void StartSpawn(){
+    public void StartSpawn(){
         isSpawning = true;
         spawnPercnt = 0;
         if(spawnTime == 0){
@@ -131,7 +131,9 @@ public class Sun : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPo
     {
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
-
+    private void Awake() {
+        rect = GetComponent<RectTransform>();
+    }
     private void Update() {
         ListenSpawn();
         ListenFall();
@@ -139,12 +141,11 @@ public class Sun : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPo
         ListenCollect();
     }
     public void InitSun(){
-        rect = GetComponent<RectTransform>();
         isCollecting = false;
         isFalling = false;
         isSpawning = false;
         isExisting = false;
-        rect.localScale = Vector3.one;
+        //rect.localScale = Vector3.one;
     }
     public void HideSun(){
         rect.gameObject.SetActive(false);
