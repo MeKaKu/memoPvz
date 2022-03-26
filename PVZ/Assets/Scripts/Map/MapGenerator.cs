@@ -30,7 +30,6 @@ public class MapGenerator : MonoBehaviour
 
     public void GeneratePlant(AssetId id, Vector3 point){
         Vector3 pos = ToGridPos(point);
-        Debug.Log(pos);
         Plant newPlant = Instantiate<Plant>(LocalData.instance.GetPlantArticle(id).plantPrefab, plantsTran);
         newPlant.transform.localPosition = pos;
     }

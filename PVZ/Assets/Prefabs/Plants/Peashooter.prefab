@@ -212,7 +212,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 30
-  interval: 10
+  interval: 2
+  bulletPrefab: {fileID: 6785461082405026877, guid: e63b48af53ea7c7419cca891398edd35, type: 3}
+  muzzleTrans: {fileID: 731253030}
 --- !u!95 &1032840154
 Animator:
   serializedVersion: 3
