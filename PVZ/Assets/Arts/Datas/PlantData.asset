@@ -25,3 +25,7 @@ MonoBehaviour:
     cardSprite: {fileID: 21300000, guid: 8121a5ef2e59dda469a8943d8d0160f6, type: 3}
     iconSprite: {fileID: 21300000, guid: 4fc1994add0cf674fbec1ff3fd5bec06, type: 3}
     plantPrefab: {fileID: 5351873570544579228, guid: accfb162bee9db245addc0b09989ce75, type: 3}
+  - id: 4
+    cardSprite: {fileID: 21300000, guid: c2cc004192311d0419bbacb66552ea1f, type: 3}
+    iconSprite: {fileID: 21300000, guid: 05c4f5e6d889e054aaeaabeadccf34ac, type: 3}
+    plantPrefab: {fileID: 1966252313109895529, guid: 91ac90b01603cc7488468bab2e211364, type: 3}

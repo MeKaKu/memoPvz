@@ -28,6 +28,7 @@ public class ChosePlantPlane : BaseUI
     }
 
     public void ShowPlant(AssetId _assetId){
+        infoRect.anchoredPosition = Input.mousePosition;
         assetId = _assetId;
         image.sprite = LocalData.instance.GetPlantArticle(assetId).iconSprite;
         Show();

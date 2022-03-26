@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Alive : MonoBehaviour
 {
+    [Header(">生命")]
     public float maxHp;
-    public float hp{get;private set;}
+    public float hp{get;protected set;}
     protected bool isDead;
 
     public event System.Action onDeath;
@@ -17,7 +18,10 @@ public class Alive : MonoBehaviour
         TakeDamage(damage);
     }
     public virtual void TakeDamage(float damage){
-
+        hp -= damage;
+        if(hp <= 0){
+            Die();
+        }
     }
     public virtual void Die(){
         isDead = true;
