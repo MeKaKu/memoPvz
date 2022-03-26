@@ -16,14 +16,14 @@ public class Zombie : Alive
     public bool isAttacking;//是否正在攻击
     [Header(">动画")]
     public Animator animator;//动画控制器
-    private float localRefactor = .0001f;
+    private float localRefactor = .01f;
     protected virtual void Update(){
         ListenAttack();
         Move();
     }
     protected virtual void Move(){
         if(isMoving){
-            transform.Translate(moveDir * moveSpeed * localRefactor, Space.Self);
+            transform.Translate(moveDir * moveSpeed * localRefactor * Time.deltaTime, Space.Self);
         }
     }
 
