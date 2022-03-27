@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 2088489727751496030}
   - component: {fileID: 5351873570544579228}
   - component: {fileID: 7006859468065489497}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: WallNut
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 2088489727751496016}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 5, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 0.8, z: 1}
+  m_LocalScale: {x: 1.05, y: 0.85, z: 1}
   m_Children:
   - {fileID: 2088489727556590758}
   m_Father: {fileID: 0}
@@ -210,8 +210,37 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a2d47119f19a1841a792544b19d1be2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHp: 50
+  maxHp: 300
   interval: 100
+  spriteAnimator: {fileID: 2088489727751496030}
+  percent66Sprites:
+  - {fileID: 21300000, guid: 8ca6458bbe0e15b47a6e4f7200f18286, type: 3}
+  - {fileID: 21300000, guid: 68261f67cf77c394fb895ea32186f233, type: 3}
+  - {fileID: 21300000, guid: b3783c8d7a4454e49adb8570af6ff27f, type: 3}
+  - {fileID: 21300000, guid: 041a36a5a6493b64e982a4768a54434e, type: 3}
+  - {fileID: 21300000, guid: cfa72f84935e9304f8ddc7a52298af15, type: 3}
+  - {fileID: 21300000, guid: 61bea23b6bb55434db0d05aef8bb0369, type: 3}
+  - {fileID: 21300000, guid: c3d45e9337497e1469ea8b64063c8abd, type: 3}
+  - {fileID: 21300000, guid: 90eb39955706b8744a76e7f149a2512a, type: 3}
+  - {fileID: 21300000, guid: 16fadc1f35b977f43aef7868d6774d56, type: 3}
+  - {fileID: 21300000, guid: 2770f4d35e2e89649a8769a7efee1958, type: 3}
+  - {fileID: 21300000, guid: ba235ae9d63cfbb46bba7a452407215a, type: 3}
+  percent33Sprites:
+  - {fileID: 21300000, guid: 6d4851d9bc229be42a35895e5637a648, type: 3}
+  - {fileID: 21300000, guid: bb389d23b1bb71d49b8ca2ac9074fcdd, type: 3}
+  - {fileID: 21300000, guid: 6f13efd04c9bbd449949cfbbb47f476f, type: 3}
+  - {fileID: 21300000, guid: cd31fe70aefd69342932a79c4f94defd, type: 3}
+  - {fileID: 21300000, guid: 22ebd3815a51bdd48a4071df42f870c7, type: 3}
+  - {fileID: 21300000, guid: b7a2777eda95169438f883f5c58fb9e2, type: 3}
+  - {fileID: 21300000, guid: 376f0fbf1e1e9304c9861deb2bc6e7fd, type: 3}
+  - {fileID: 21300000, guid: 923116b229b40ad45b50ae75f68db265, type: 3}
+  - {fileID: 21300000, guid: fdb2b50383cb28345851011e85a13226, type: 3}
+  - {fileID: 21300000, guid: ae62d18111fbdee438981bdae800a99a, type: 3}
+  - {fileID: 21300000, guid: 19b5f6497ca5f844a866a2567166d7fd, type: 3}
+  - {fileID: 21300000, guid: fa6b358db8eb44b4fa82929fd22d9987, type: 3}
+  - {fileID: 21300000, guid: 2e6f158d2024eb441bc088b020d8dccf, type: 3}
+  - {fileID: 21300000, guid: 75c726f0aaba05743be2de3275f7185e, type: 3}
+  - {fileID: 21300000, guid: 6f7f98ce45249fd45b49f30325f2f6ef, type: 3}
 --- !u!65 &7006859468065489497
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1966252313109895529}
   - component: {fileID: 1323191151}
   - component: {fileID: 6319863793918730494}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: CherryBomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}

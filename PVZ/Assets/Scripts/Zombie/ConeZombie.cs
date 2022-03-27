@@ -21,6 +21,7 @@ public class ConeZombie : Zombie
         }
     }
     public override void TakeDamage(float damage){
+        if(isDead) return;
         base.TakeDamage(damage);
         if(hp > .75f * maxHp){
             if(curConeInd != 0){

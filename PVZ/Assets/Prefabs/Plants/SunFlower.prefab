@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1000380421739823339}
   - component: {fileID: 1000380421739823337}
   - component: {fileID: 7231580719581101644}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SunFlower
   m_TagString: Untagged
   m_Icon: {fileID: 0}

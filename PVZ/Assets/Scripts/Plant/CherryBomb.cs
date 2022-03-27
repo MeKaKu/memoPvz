@@ -6,7 +6,23 @@ public class CherryBomb : Plant
 {
     protected override void Start() {
         base.Start();
-        Invoke("DestroyMe", 1.7f);
+    }
+
+    protected override void Update()
+    {
+        
+    }
+
+    protected override void DoSomething()
+    {
+        GetComponent<SpriteRenderer>().sortingOrder = 6;
+        Collider[] colliders = Physics.OverlapBox(transform.position,
+                                                new Vector3(.4f, .4f, .1f),
+                                                Quaternion.identity,
+                                                LayerMask.GetMask("Zombie"));
+        foreach(Collider collider in colliders){
+            collider.gameObject.GetComponent<Zombie>().BoomDie();
+        }
     }
 
     void DestroyMe(){

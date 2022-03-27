@@ -43,7 +43,7 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    void CheckCollisionOnStart(){
+    public void CheckCollisionOnStart(){
         //检测子弹是否产生时就在碰撞体内
         Collider[] colliders = Physics.OverlapSphere(transform.position, .1f, attackLayer);
         if(colliders.Length > 0){

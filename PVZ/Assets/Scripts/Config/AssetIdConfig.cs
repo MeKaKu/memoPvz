@@ -7,3 +7,9 @@ public enum AssetId{
     WallNut,//坚果墙,90ms,100ms,100ms
     CherryBomb,//樱桃炸弹,90ms
 }
+
+public enum ZombieAssetId{
+    BaseZombie,
+    ConeZombie,
+    BucketZombie,
+}

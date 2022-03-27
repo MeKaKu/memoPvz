@@ -9,16 +9,10 @@ public class SpriteAnimator : MonoBehaviour
     public int animationRate = 25;
     float nextChangeTime;
     int index = 0;
-    int maxindex = 1;
     SpriteRenderer spriteRenderer;
     void Start() {
         spriteRenderer = GetComponent<SpriteRenderer>();
-        maxindex = sprites.Length;
-        if(maxindex <= 1){
-            throw new System.Exception("Not animation");
-        }
     }
-
     void Update() {
         if(animationRate == 0) return;
         if(Time.time > nextChangeTime){
@@ -26,10 +20,9 @@ public class SpriteAnimator : MonoBehaviour
             changeSprite();
         }
     }
-
     void changeSprite(){
-        if(index >= maxindex){
-            index -= maxindex;
+        if(index >= sprites.Length){
+            index = 0;
         }
         spriteRenderer.sprite = sprites[index];
         index ++;

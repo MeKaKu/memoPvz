@@ -28,7 +28,7 @@ public class Zombie : Alive
     }
 
     protected virtual void ListenAttack(){
-        if(Physics.Raycast(transform.position, moveDir,out RaycastHit hit, 10 * localRefactor, attackLayer)){
+        if(Physics.Raycast(transform.position, moveDir,out RaycastHit hit, localRefactor, attackLayer)){
             //进行攻击
             if(!isAttacking){
                 animator.SetBool("attack", true);
@@ -80,5 +80,16 @@ public class Zombie : Alive
     }
     public void OnCompleteDieAnim(){
         Die();
+    }
+
+    /// <summary>
+    /// 被炸死
+    /// </summary>
+    public void BoomDie(){
+        isMoving = false;
+        if(isDead ) return;
+        TakeDamage(hp - .1f);
+        isDead = true;
+        animator.Play("boomDie");
     }
 }
