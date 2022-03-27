@@ -9,7 +9,7 @@ public class PlantData : ScriptableObject
     
     [System.Serializable]
     public class PlantArticle{
-        public AssetId id;
+        public PlantAssetId id;
         public Sprite cardSprite;
         public Sprite iconSprite;
         public Plant plantPrefab;

@@ -7,10 +7,10 @@ public class ChosePlantPlane : BaseUI
 {
     public RectTransform infoRect;
     public Image image;
-    public AssetId assetId = AssetId.None;
+    public PlantAssetId assetId = PlantAssetId.None;
     public LayerMask layerMask;
     private void Update() {
-        if(assetId != AssetId.None){
+        if(assetId != PlantAssetId.None){
             infoRect.anchoredPosition = Input.mousePosition;
             if(Input.GetMouseButtonDown(0)){
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -27,7 +27,7 @@ public class ChosePlantPlane : BaseUI
         }
     }
 
-    public void ShowPlant(AssetId _assetId){
+    public void ShowPlant(PlantAssetId _assetId){
         infoRect.anchoredPosition = Input.mousePosition;
         assetId = _assetId;
         image.sprite = LocalData.instance.GetPlantArticle(assetId).iconSprite;
@@ -37,6 +37,6 @@ public class ChosePlantPlane : BaseUI
     public override void Hide()
     {
         base.Hide();
-        assetId = AssetId.None;
+        assetId = PlantAssetId.None;
     }
 }

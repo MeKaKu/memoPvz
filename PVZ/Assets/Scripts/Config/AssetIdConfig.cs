@@ -1,6 +1,6 @@
 
 
-public enum AssetId{
+public enum PlantAssetId{
     None,
     PeaShooter,//豌豆射手,90ms
     SunFlower,//太阳花,110ms
@@ -9,7 +9,7 @@ public enum AssetId{
 }
 
 public enum ZombieAssetId{
-    BaseZombie,
-    ConeZombie,
-    BucketZombie,
+    BaseZombie,//基础僵尸
+    ConeZombie,//路障僵尸
+    BucketZombie,//铁桶僵尸
 }

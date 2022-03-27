@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Image))]
 public class Card : BaseUI, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
-    public AssetId assetId = AssetId.None;
+    public PlantAssetId assetId = PlantAssetId.None;
     Image image;//显示的图片
     CDMask cdMask;//cd遮罩
     public bool isSunEnough;//阳光是否足够

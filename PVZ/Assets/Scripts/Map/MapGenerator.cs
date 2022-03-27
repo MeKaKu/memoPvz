@@ -28,7 +28,7 @@ public class MapGenerator : MonoBehaviour
         return new Vector3(Mathf.Round(p.x), Mathf.Round(p.y), 0);
     }
 
-    public void GeneratePlant(AssetId id, Vector3 point){
+    public void GeneratePlant(PlantAssetId id, Vector3 point){
         Vector3 pos = ToGridPos(point);
         Plant newPlant = Instantiate<Plant>(LocalData.instance.GetPlantArticle(id).plantPrefab, plantsTran);
         newPlant.transform.localPosition = pos;

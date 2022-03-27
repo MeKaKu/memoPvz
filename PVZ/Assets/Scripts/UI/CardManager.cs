@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    public List<AssetId> cardIds;//卡片数据列表
+    public List<PlantAssetId> cardIds;//卡片数据列表
     List<Card> cards;//卡片列表
     public Card cardPrefab;//卡片预制体
     public Transform cardBar;//卡片存放的位置
