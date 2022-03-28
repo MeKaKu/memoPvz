@@ -72,4 +72,9 @@ public class SunManager : MonoBehaviour
         sunObject.transform.SetAsLastSibling();
         return sunObject;
     }
+
+    public void UpdateSunNum(int _deltaSunNum){
+        sunNum += _deltaSunNum;
+        sunNumText.text = sunNum.ToString();
+    }
 }

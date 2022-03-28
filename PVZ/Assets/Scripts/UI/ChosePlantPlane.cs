@@ -20,7 +20,7 @@ public class ChosePlantPlane : BaseUI
                     mapGenerator.GeneratePlant(assetId, hit.point);
                     Hide();
                     Card card = FindObjectOfType<CardManager>().chosenCard;
-                    SunManager.sunNum -= card.sunCost;
+                    FindObjectOfType<SunManager>().UpdateSunNum(-card.sunCost);
                     card.EnterCD();
                     card.isChosen = false;
                     card = null;

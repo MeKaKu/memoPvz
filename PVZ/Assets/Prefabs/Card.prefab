@@ -90,11 +90,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6985b89484b1521438b09a25702609f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sunCost: 50
-  cardSprite: {fileID: 21300000, guid: 99d978fcd9db6644e985aaf84403bd29, type: 3}
-  plantSprite: {fileID: 21300000, guid: 7633d697d4ddb244c8666b17d92b24ea, type: 3}
+  assetId: 0
+  isSunEnough: 0
+  isMouseEnter: 0
+  isChosen: 0
   infoText: {fileID: 3233078354048844528}
-  chosePlantPlane: {fileID: 0}
   cursorTex: {fileID: 2800000, guid: 552f8576236d9844790ceb3769e44767, type: 3}
 --- !u!1 &3233078354048844532
 GameObject:
@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 0.49019608}
+  m_Color: {r: 0.14150941, g: 0.14150941, b: 0.14150941, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

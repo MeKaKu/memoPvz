@@ -75,11 +75,11 @@ public class Card : BaseUI, IPointerEnterHandler, IPointerExitHandler, IPointerD
         cdMask.StartCD(cd);
     }
     public void EnoughSun(bool _isSunEnough){
-        if(_isSunEnough){
+        if(_isSunEnough && !isCD){
             image.color = Color.white;
         }
         else{
-            image.color = Color.white * .77f;
+            image.color = Color.white * .75f;
         }
         isSunEnough = _isSunEnough;
     }
