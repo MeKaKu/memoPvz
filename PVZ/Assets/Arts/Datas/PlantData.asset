@@ -43,3 +43,9 @@ MonoBehaviour:
     plantPrefab: {fileID: 8097532024361490167, guid: b369c7d1ae8c90546a8b47f01aae301a, type: 3}
     cardCD: 30
     sunCost: 25
+  - id: 6
+    cardSprite: {fileID: 21300000, guid: dbc751d3bdf04f2488567d338c99ce78, type: 3}
+    iconSprite: {fileID: 21300000, guid: 867295b9af4fb0e4fbd856b7683effd2, type: 3}
+    plantPrefab: {fileID: 804156784076228909, guid: 8dc88048028612a469dcfc0ee1bfddb3, type: 3}
+    cardCD: 40
+    sunCost: 50

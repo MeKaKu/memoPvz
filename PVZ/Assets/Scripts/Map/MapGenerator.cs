@@ -10,7 +10,12 @@ public class MapGenerator : MonoBehaviour
     public LayerMask layerMask;
     //public GameObject carPrefab;//小推车的预制体
     public Transform plantsTran;
+    int n, m;
+    GameObject[] grids;
     void Awake(){
+        n = Mathf.RoundToInt(deltaSize.x);
+        m = Mathf.RoundToInt(deltaSize.y);
+        grids = new GameObject[n * m];
         GenerateMap();
     }
 
@@ -28,9 +33,21 @@ public class MapGenerator : MonoBehaviour
         return new Vector3(Mathf.Round(p.x), Mathf.Round(p.y), 0);
     }
 
-    public void GeneratePlant(PlantAssetId id, Vector3 point){
+    public bool GeneratePlant(PlantAssetId id, Vector3 point){
         Vector3 pos = ToGridPos(point);
+        int index = GridToIndex(pos);
+        if(grids[index]!=null){
+            return false;
+        }
         Plant newPlant = Instantiate<Plant>(LocalData.instance.GetPlantArticle(id).plantPrefab, plantsTran);
         newPlant.transform.localPosition = pos;
+        grids[index] = newPlant.gameObject;
+        return true;
+    }
+
+    public int GridToIndex(Vector3 gridPos){
+        int x = Mathf.RoundToInt(gridPos.x);
+        int y = Mathf.RoundToInt(gridPos.y + deltaSize.y * .5f - .5f);
+        return x + y * n;
     }
 }

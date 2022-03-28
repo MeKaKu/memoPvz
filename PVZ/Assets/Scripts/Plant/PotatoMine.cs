@@ -6,6 +6,7 @@ public class PotatoMine : Plant
 {
     public float readyTime = 8;
     public  Animator animator;
+    private bool isUsed;
 
     protected override void Start()
     {
@@ -20,11 +21,13 @@ public class PotatoMine : Plant
     }
     protected override void DoSomething()
     {
+        if(isUsed) return;
         Collider[] colliders = Physics.OverlapBox(transform.position,
                                                 new Vector3(.09f, .09f, .01f),
                                                 Quaternion.identity,
                                                 LayerMask.GetMask("Zombie"));
         if(colliders.Length > 0){
+            isUsed = true;
             //Bomb
             animator.SetBool("bomb", true);
             GetComponent<SpriteRenderer>().sortingOrder = 6;

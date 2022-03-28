@@ -10,20 +10,21 @@ public class ChosePlantPlane : BaseUI
     public PlantAssetId assetId = PlantAssetId.None;
     public LayerMask layerMask;
     private void Update() {
-        if(assetId != PlantAssetId.None){
+        if(assetId != PlantAssetId.None){//手里面那里植物时
             infoRect.anchoredPosition = Input.mousePosition;
             if(Input.GetMouseButtonDown(0)){
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
                 if(Physics.Raycast(ray,out hit, layerMask)){
                     MapGenerator mapGenerator = FindObjectOfType<MapGenerator>();
-                    mapGenerator.GeneratePlant(assetId, hit.point);
-                    Hide();
                     Card card = FindObjectOfType<CardManager>().chosenCard;
-                    FindObjectOfType<SunManager>().UpdateSunNum(-card.sunCost);
-                    card.EnterCD();
+                    if(mapGenerator.GeneratePlant(assetId, hit.point)){
+                        FindObjectOfType<SunManager>().UpdateSunNum(-card.sunCost);
+                        card.EnterCD();
+                    }
                     card.isChosen = false;
                     card = null;
+                    Hide();
                 }
             }
         }
