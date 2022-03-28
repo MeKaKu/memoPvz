@@ -5,7 +5,7 @@ using UnityEngine;
 public class CardManager : MonoBehaviour
 {
     public List<PlantAssetId> cardIds;//卡片数据列表
-    List<Card> cards;//卡片列表
+    List<Card> cards = new List<Card>();//卡片列表
     public Card cardPrefab;//卡片预制体
     public Transform cardBar;//卡片存放的位置
 
@@ -16,6 +16,10 @@ public class CardManager : MonoBehaviour
     }
 
     void Update(){
+        //TODO:卡片状态
+        foreach(Card card in cards){
+            card.EnoughSun(SunManager.sunNum >= card.sunCost);
+        }
         if(Input.GetMouseButtonDown(1)){
             //鼠标右键按下
             if(chosenCard){
@@ -32,6 +36,7 @@ public class CardManager : MonoBehaviour
             //card.cardSprite = LocalData.instance.GetPlantArticle(cardId).cardSprite;
             card.onPointerEnter += OnCardPointerEnter;
             card.onPointerDown += OnCardPointerDown;
+            cards.Add(card);
         }
     }
     void DoChooseCard(Card _card){

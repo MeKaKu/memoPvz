@@ -19,9 +19,11 @@ public class ChosePlantPlane : BaseUI
                     MapGenerator mapGenerator = FindObjectOfType<MapGenerator>();
                     mapGenerator.GeneratePlant(assetId, hit.point);
                     Hide();
-                    CardManager cardManager = FindObjectOfType<CardManager>();
-                    cardManager.chosenCard.isChosen = false;
-                    cardManager.chosenCard = null;
+                    Card card = FindObjectOfType<CardManager>().chosenCard;
+                    SunManager.sunNum -= card.sunCost;
+                    card.EnterCD();
+                    card.isChosen = false;
+                    card = null;
                 }
             }
         }

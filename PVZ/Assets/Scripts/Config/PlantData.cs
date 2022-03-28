@@ -13,5 +13,7 @@ public class PlantData : ScriptableObject
         public Sprite cardSprite;
         public Sprite iconSprite;
         public Plant plantPrefab;
+        public float cardCD;
+        public int sunCost;
     }
 }

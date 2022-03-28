@@ -11,7 +11,7 @@ public class WallNut : Plant
 
     public override void TakeDamage(float damage)
     {
-        base.TakeDamage(damage);
+        hp -= damage;
         if(hp > .66f * maxHp){
         }
         else if(hp > .33f * maxHp){
@@ -25,6 +25,9 @@ public class WallNut : Plant
                 curInd = 1;
                 spriteAnimator.sprites = percent33Sprites;
             }
+        }
+        if(hp <= 0){
+            Die();
         }
     }
 }

@@ -22,7 +22,7 @@ public class ConeZombie : Zombie
     }
     public override void TakeDamage(float damage){
         if(isDead) return;
-        base.TakeDamage(damage);
+        hp -= damage;
         if(hp > .75f * maxHp){
             if(curConeInd != 0){
                 curConeInd = 0;
@@ -49,5 +49,7 @@ public class ConeZombie : Zombie
                 animator.Play("coneFall");
             }
         }
+        hp += damage;
+        base.TakeDamage(damage);
     }
 }

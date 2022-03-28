@@ -5,7 +5,7 @@ using UnityEngine;
 public class Zombie : Alive
 {
     [Header(">移动")]
-    public float moveSpeed = 5;//移动速度
+    public float moveSpeed = 1;//移动速度
     public Vector3 moveDir = Vector3.left;//移动方向
     public bool isMoving = true;//是否正在移动
     [Header(">攻击")]
@@ -17,18 +17,23 @@ public class Zombie : Alive
     [Header(">动画")]
     public Animator animator;//动画控制器
     private float localRefactor = .01f;
+    protected override void Start() {
+        base.Start();
+        animator.speed = moveSpeed;
+    }
     protected virtual void Update(){
         ListenAttack();
         Move();
     }
     protected virtual void Move(){
         if(isMoving){
-            transform.Translate(moveDir * moveSpeed * localRefactor * Time.deltaTime, Space.Self);
+            //transform.Translate(moveDir * moveSpeed * localRefactor * Time.deltaTime, Space.Self);
         }
     }
 
     protected virtual void ListenAttack(){
-        if(Physics.Raycast(transform.position, moveDir,out RaycastHit hit, localRefactor, attackLayer)){
+        Collider[] colliders = Physics.OverlapBox(transform.position + moveDir * localRefactor, Vector3.one * localRefactor / 2, Quaternion.identity, attackLayer);
+        if(colliders.Length > 0){
             //进行攻击
             if(!isAttacking){
                 animator.SetBool("attack", true);
@@ -47,12 +52,12 @@ public class Zombie : Alive
         if(isAttacking){
             if(Time.time > nextAttackTime){
                 nextAttackTime = Time.time + attackInterval;
-                Attack(hit);
+                Attack(colliders[0]);
             }
         }
     }
-    protected virtual void Attack(RaycastHit hit){
-        Plant plant = hit.collider.gameObject.GetComponent<Plant>();
+    protected virtual void Attack(Collider hit){
+        Plant plant = hit.gameObject.GetComponent<Plant>();
         if(plant != null) plant.TakeDamage(attackPower);
     }
 

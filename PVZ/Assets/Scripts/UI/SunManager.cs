@@ -13,13 +13,13 @@ public class SunManager : MonoBehaviour
     public Vector2 spawnRangeY = new Vector2(-275, 275);//太阳生成位置Y坐标范围
     public Transform sunCollection;//太阳被收集的位置
     float nextSpawnTime;//下一次生成太阳的时间
-
-    public static int sunNum{get;private set;}//当前的阳光值
+    public int startSunNum = 50;
+    public static int sunNum;//当前的阳光值
     public Text sunNumText;
     #endregion
 
     private void Start() {
-        sunNum = 0;
+        sunNum = startSunNum;
         nextSpawnTime = Time.time + interval;
         sunNumText.text = sunNum.ToString();
     }

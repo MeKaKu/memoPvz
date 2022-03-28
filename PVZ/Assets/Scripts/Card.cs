@@ -14,9 +14,10 @@ public class Card : BaseUI, IPointerEnterHandler, IPointerExitHandler, IPointerD
     public bool isMouseEnter;//鼠标是否进入
     public bool isCD{get;private set;}//是否正在CD
     public bool isChosen;//是否被选中
-    public int sunCost;//需要花费的阳光
+    public int sunCost{get;private set;}//需要花费的阳光
     public Text infoText;//鼠标悬停的提示信息
     public Texture2D cursorTex;//光标
+    private float cd;
 
     public event System.Action<Card> onPointerEnter;
     public event System.Action<Card> onPointerDown;
@@ -33,7 +34,10 @@ public class Card : BaseUI, IPointerEnterHandler, IPointerExitHandler, IPointerD
         };
     }
     private void Start() {
-        image.sprite = LocalData.instance.GetPlantArticle(assetId).cardSprite;
+        PlantData.PlantArticle plantArticle = LocalData.instance.GetPlantArticle(assetId);
+        image.sprite = plantArticle.cardSprite;
+        cd = plantArticle.cardCD;
+        sunCost = plantArticle.sunCost;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -66,5 +70,17 @@ public class Card : BaseUI, IPointerEnterHandler, IPointerExitHandler, IPointerD
     }
     public void HideInfo(){
         infoText.gameObject.SetActive(false);
+    }
+    public void EnterCD(){
+        cdMask.StartCD(cd);
+    }
+    public void EnoughSun(bool _isSunEnough){
+        if(_isSunEnough){
+            image.color = Color.white;
+        }
+        else{
+            image.color = Color.white * .77f;
+        }
+        isSunEnough = _isSunEnough;
     }
 }

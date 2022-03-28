@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Bullet : MonoBehaviour
 {
@@ -13,10 +14,11 @@ public class Bullet : MonoBehaviour
     private float lifTime = 20;
     private bool isMoving = true;
     private float refactor = .01f;
-    private float targetMoveDist = .01f;
+    private float targetMoveDist = .03f;
     IEnumerator animateHitEffect;
     public System.Action onDestroy;
     SpriteRenderer sr;
+    public GameObject shadow;
 
     private void Awake() {
         sr = GetComponent<SpriteRenderer>();
@@ -32,6 +34,7 @@ public class Bullet : MonoBehaviour
         transform.localScale = new Vector3(1,.86f,1);
         sr.color = Color.white;
         sr.sprite = bulletSprite;
+        shadow.SetActive(true);
         Invoke("DestroyBullet", lifTime);
     }
     
@@ -58,7 +61,6 @@ public class Bullet : MonoBehaviour
     }
 
     void HitObject(Collider collider, Vector3 hitPos){
-        Debug.Log(collider.name);
         isMoving = false;
         Alive alive = collider.gameObject.GetComponent<Alive>();
         if(alive != null){
@@ -73,6 +75,7 @@ public class Bullet : MonoBehaviour
     }
 
     IEnumerator AnimateHitEffect(){
+        shadow.SetActive(false);
         float percent = 0;
         float duration = .35f;
         sr.sprite = hitSprite;
