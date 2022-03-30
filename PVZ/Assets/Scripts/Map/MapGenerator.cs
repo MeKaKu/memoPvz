@@ -33,6 +33,12 @@ public class MapGenerator : MonoBehaviour
         return new Vector3(Mathf.Round(p.x), Mathf.Round(p.y), 0);
     }
 
+    /// <summary> 种植物
+    /// 在指定位置种下指定植物
+    /// </summary>
+    /// <param name="id">植物id</param>
+    /// <param name="point">种植的位置</param>
+    /// <returns>是否成功种植</returns>
     public bool GeneratePlant(PlantAssetId id, Vector3 point){
         Vector3 pos = ToGridPos(point);
         int index = GridToIndex(pos);
@@ -50,5 +56,17 @@ public class MapGenerator : MonoBehaviour
         int x = Mathf.RoundToInt(gridPos.x);
         int y = Mathf.RoundToInt(gridPos.y + deltaSize.y * .5f - .5f);
         return x + y * n;
+    }
+
+    public bool ClearPlant(Vector3 point){
+        Vector3 pos = ToGridPos(point);
+        int index = GridToIndex(pos);
+        if(grids[index] == null){
+            return false;
+        }
+        Destroy(grids[index]);
+        grids[index] = null;
+        AudioManager.instance.PlaySound("ClearPlant", point);
+        return true;
     }
 }

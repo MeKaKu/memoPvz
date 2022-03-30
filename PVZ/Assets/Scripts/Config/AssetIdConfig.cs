@@ -2,6 +2,7 @@
 
 public enum PlantAssetId{
     None,
+    Shovel,//铲子
     PeaShooter,//豌豆射手,90ms
     SunFlower,//太阳花,110ms
     WallNut,//坚果墙,90ms,100ms,100ms

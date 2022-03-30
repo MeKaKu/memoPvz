@@ -47,13 +47,15 @@ public class CardManager : MonoBehaviour
         chosePlantPlane.Hide();
         chosenCard = null;
     }
-    void OnCardPointerEnter(Card _card){
+    void OnCardPointerEnter(Chooseable chooseable){
+        Card _card = chooseable as Card;
         if(_card.isCD || _card.isChosen || !_card.isSunEnough){
             return ;
         }
         _card.DoMouseHover();
     }
-    void OnCardPointerDown(Card _card){
+    void OnCardPointerDown(Chooseable chooseable){
+        Card _card = chooseable as Card;
         if(_card.isCD || !_card.isSunEnough){//CD中或者阳光不够时,无法被选中
             return ;
         }

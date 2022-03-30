@@ -15,15 +15,24 @@ public class ChosePlantPlane : BaseUI
             if(Input.GetMouseButtonDown(0)){
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
                 RaycastHit hit;
+                MapGenerator mapGenerator = FindObjectOfType<MapGenerator>();
                 if(Physics.Raycast(ray,out hit, layerMask)){
-                    MapGenerator mapGenerator = FindObjectOfType<MapGenerator>();
-                    Card card = FindObjectOfType<CardManager>().chosenCard;
-                    if(mapGenerator.GeneratePlant(assetId, hit.point)){
-                        FindObjectOfType<SunManager>().UpdateSunNum(-card.sunCost);
-                        card.EnterCD();
+                    if(assetId == PlantAssetId.Shovel){//铲子
+                        //TODO:铲除植物
+                        mapGenerator.ClearPlant(hit.point);
+                        Chooseable shovel = FindObjectOfType<ShovelManager>().shovel;
+                        shovel.isChosen = false;
+                        shovel.Show();
                     }
-                    card.isChosen = false;
-                    card = null;
+                    else{
+                        Card card = FindObjectOfType<CardManager>().chosenCard;
+                        if(mapGenerator.GeneratePlant(assetId, hit.point)){
+                            FindObjectOfType<SunManager>().UpdateSunNum(-card.sunCost);
+                            card.EnterCD();
+                        }
+                        card.isChosen = false;
+                        card = null;
+                    }
                     Hide();
                 }
             }
@@ -35,7 +44,12 @@ public class ChosePlantPlane : BaseUI
         assetId = _assetId;
         image.sprite = LocalData.instance.GetPlantArticle(assetId).iconSprite;
         Show();
-        AudioManager.instance.PlaySound("ChosePlant", Vector3.zero);
+        if(assetId == PlantAssetId.Shovel){
+            AudioManager.instance.PlaySound("ChoseShovel", Vector3.zero);
+        }
+        else{
+            AudioManager.instance.PlaySound("ChosePlant", Vector3.zero);
+        }
     }
 
     public override void Hide()

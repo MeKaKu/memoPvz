@@ -18,7 +18,7 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 0b90a3d920f1ba34f8bac43d3c364ba8, type: 3}
   - audioID: ChosePlant
     audioClips:
-    - {fileID: 8300000, guid: c9c04768b5c680f43a7c7ae763097f74, type: 3}
+    - {fileID: 8300000, guid: 287aaa7ed195bec4894ea50c5f2d7850, type: 3}
   - audioID: PlantPlant
     audioClips:
     - {fileID: 8300000, guid: 93c49e5f8d59bc74b98eb03929459289, type: 3}
@@ -46,3 +46,9 @@ MonoBehaviour:
     - {fileID: 8300000, guid: 7d7b955f78780274091f0580b6d85e2d, type: 3}
     - {fileID: 8300000, guid: 624e8fbb1277bb145a232e9b8434e8b4, type: 3}
     - {fileID: 8300000, guid: 9c561ae0596af6441af7851856c98cd1, type: 3}
+  - audioID: ClearPlant
+    audioClips:
+    - {fileID: 8300000, guid: c9c04768b5c680f43a7c7ae763097f74, type: 3}
+  - audioID: ChoseShovel
+    audioClips:
+    - {fileID: 8300000, guid: 54b8e7ef6e5223144bc9c4ccef983ac2, type: 3}
