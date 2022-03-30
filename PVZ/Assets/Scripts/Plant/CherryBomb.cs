@@ -23,6 +23,8 @@ public class CherryBomb : Plant
         foreach(Collider collider in colliders){
             collider.gameObject.GetComponent<Zombie>().BoomDie();
         }
+        //音效
+        AudioManager.instance.PlaySound("CherryBomb", transform.position);
     }
 
     void DestroyMe(){

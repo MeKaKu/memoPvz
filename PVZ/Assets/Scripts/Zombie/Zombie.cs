@@ -105,7 +105,7 @@ public class Zombie : Alive
     public void PressDie(float _delay, float _duration){
         isMoving = false;
         if(isDead) return;
-        TakeDamage(hp - .1f);
+        //TakeDamage(hp - .1f);
         isDead = true;
         StartCoroutine(AnimatePressDie(_delay, _duration));
     }

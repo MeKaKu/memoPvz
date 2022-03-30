@@ -27,6 +27,7 @@ public class ShovelManager : MonoBehaviour
 
     private void Update() {
         if(Input.GetMouseButtonDown(1)){
+            shovel.isChosen = false;
             chosePlantPlane.Hide();
             shovel.Show();
         }

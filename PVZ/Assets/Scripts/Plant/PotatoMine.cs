@@ -34,6 +34,8 @@ public class PotatoMine : Plant
             foreach(Collider collider in colliders){
                 collider.gameObject.GetComponent<Zombie>().Die();
             }
+            //音效
+            AudioManager.instance.PlaySound("PotatoMine", transform.position);
         }
     }
 

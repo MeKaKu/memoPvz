@@ -7,7 +7,7 @@ public class BucketZombie : ConeZombie
     public override void TakeHit(float damage, Vector3 hitPoint)
     {
         if(hp > .25f * maxHp){
-            AudioManager.instance.PlaySound("ImpactBucketZombie", hitPoint);
+            AudioManager.instance.PlaySound("ImpactBucketZombie", hitPoint + Vector3.forward * 3);
         }
         else{
             AudioManager.instance.PlaySound("ImpactBaseZombie", hitPoint);

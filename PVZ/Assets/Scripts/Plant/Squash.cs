@@ -17,10 +17,10 @@ public class Squash : Plant
             isUsed = true;
             animator.SetBool("attack", true);
             GetComponent<SpriteRenderer>().sortingOrder = 6;
-            transform.localPosition += Vector3.right;
+            //transform.localPosition += Vector3.right;
             //TODO:压瘪敌人2333
             foreach(Collider collider in colliders){
-                collider.gameObject.GetComponent<Zombie>().PressDie(.35f, .5f);
+                collider.gameObject.GetComponent<Zombie>().PressDie(.5f, .5f);
             }
         }
     }
