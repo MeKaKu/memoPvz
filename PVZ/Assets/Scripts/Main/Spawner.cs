@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
+    public float timeBeforeSpawn = 10;
     public Wave[] waves;
     private Wave curWave;//当前波
     private int curWaveInd;//当前波数Index
@@ -12,8 +13,18 @@ public class Spawner : MonoBehaviour
     private int remainAlive;//当前剩余存活僵尸
     public event System.Action<int> onNewWave;//每一波开始时触发
     public Transform zombiesTrans;
+    int prePosY;
+    int n;
+    System.Random rand;
 
     private void Start() {
+        Invoke("StartSpawn", timeBeforeSpawn);
+    }
+
+    void StartSpawn(){
+        AudioManager.instance.PlaySound("StartSpawnZombies", Vector3.zero);
+        n = Mathf.RoundToInt(FindObjectOfType<MapGenerator>().deltaSize.y*.5f-.5f);
+        rand = new System.Random((int)Time.time);
         NextWave();
     }
     private void Update() {
@@ -23,7 +34,12 @@ public class Spawner : MonoBehaviour
             int index = curWave.zombies.Count - remainToSpawner;
             Zombie zombiePrefab = LocalData.instance.GetZombiePrefab(curWave.zombies[index]);
             Zombie newZombie = Instantiate<Zombie>(zombiePrefab, zombiesTrans);
-            newZombie.transform.localPosition = new Vector3(9, Random.Range(-2, 3), 0);
+            int curPosY = prePosY;
+            while(curPosY == prePosY){
+                curPosY = rand.Next(-n, n + 1);
+            }
+            prePosY = curPosY;
+            newZombie.transform.localPosition = new Vector3(9, curPosY, curPosY * .0001f + .0005f);
             newZombie.onDeath += OnZombieDead;
             remainToSpawner --;
         }

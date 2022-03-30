@@ -52,3 +52,12 @@ MonoBehaviour:
   - audioID: ChoseShovel
     audioClips:
     - {fileID: 8300000, guid: 54b8e7ef6e5223144bc9c4ccef983ac2, type: 3}
+  - audioID: CherryBomb
+    audioClips:
+    - {fileID: 8300000, guid: 1092ddc41d8717949b98b11f8d862e2e, type: 3}
+  - audioID: PotatoMine
+    audioClips:
+    - {fileID: 8300000, guid: 5b7db029ef3fc5149a2a245475eabafd, type: 3}
+  - audioID: StartSpawnZombies
+    audioClips:
+    - {fileID: 8300000, guid: b09d8d9fb56a6d24ba9f7f528624a4c5, type: 3}
