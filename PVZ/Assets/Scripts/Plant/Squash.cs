@@ -20,7 +20,7 @@ public class Squash : Plant
             transform.localPosition += Vector3.right;
             //TODO:压瘪敌人2333
             foreach(Collider collider in colliders){
-                collider.gameObject.GetComponent<Zombie>().TakeDamage(1000);
+                collider.gameObject.GetComponent<Zombie>().PressDie(.35f, .5f);
             }
         }
     }

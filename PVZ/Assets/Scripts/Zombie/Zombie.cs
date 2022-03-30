@@ -17,9 +17,11 @@ public class Zombie : Alive
     [Header(">动画")]
     public Animator animator;//动画控制器
     private float localRefactor = .01f;
+    private Collider col;
     protected override void Start() {
         base.Start();
         animator.speed = moveSpeed;
+        col = GetComponent<Collider>();
     }
     protected virtual void Update(){
         ListenAttack();
@@ -53,6 +55,8 @@ public class Zombie : Alive
             if(Time.time > nextAttackTime){
                 nextAttackTime = Time.time + attackInterval;
                 Attack(colliders[0]);
+                //音效
+                if(!isDead) AudioManager.instance.PlaySound("ZombieChomp", transform.position);
             }
         }
     }
@@ -96,5 +100,38 @@ public class Zombie : Alive
         TakeDamage(hp - .1f);
         isDead = true;
         animator.Play("boomDie");
+    }
+
+    public void PressDie(float _delay, float _duration){
+        isMoving = false;
+        if(isDead) return;
+        TakeDamage(hp - .1f);
+        isDead = true;
+        StartCoroutine(AnimatePressDie(_delay, _duration));
+    }
+
+    IEnumerator AnimatePressDie(float delay, float duration){
+        float percent = 0;
+        while(percent < 1){
+            percent += Time.deltaTime / delay;
+            yield return null;
+        }
+        percent = 0;
+        Vector3 originScale = transform.localScale;
+        Vector3 originPosition = transform.localPosition;
+        Vector3 targetScale = new Vector3(transform.localScale.x, 0.1f, 1);
+        Vector3 targetPosition = transform.localPosition - Vector3.up * .25f;
+        while(percent < 1){
+            percent += Time.deltaTime / duration;
+            transform.localScale = Vector3.Lerp(originScale, targetScale, percent * percent);
+            transform.localPosition = Vector3.Lerp(originPosition, targetPosition, percent * percent);
+            yield return null;
+        }
+        Die();
+    }
+
+    public override void TakeHit(float damage, Vector3 hitPoint){
+        AudioManager.instance.PlaySound("ImpactBaseZombie", hitPoint);
+        base.TakeHit(damage, hitPoint);
     }
 }

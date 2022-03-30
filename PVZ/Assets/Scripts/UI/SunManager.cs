@@ -59,6 +59,7 @@ public class SunManager : MonoBehaviour
             sunObject = Instantiate<GameObject>(sunPrefab, suns);
             Sun sun = sunObject.GetComponent<Sun>();
             sun.onCollectStarted += (num)=>{
+                AudioManager.instance.PlaySound("CollectSun", Vector3.zero);
                 sunNum += num;
             };
             sun.onSunCollected += ()=>{

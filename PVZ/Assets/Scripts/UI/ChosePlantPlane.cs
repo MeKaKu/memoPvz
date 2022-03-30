@@ -35,6 +35,7 @@ public class ChosePlantPlane : BaseUI
         assetId = _assetId;
         image.sprite = LocalData.instance.GetPlantArticle(assetId).iconSprite;
         Show();
+        AudioManager.instance.PlaySound("ChosePlant", Vector3.zero);
     }
 
     public override void Hide()

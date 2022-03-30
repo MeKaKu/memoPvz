@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0116c0964ab59c04196a22ecc2c7e72d, type: 3}
+  m_Name: AudioData
+  m_EditorClassIdentifier: 
+  audioGroups:
+  - audioID: CollectSun
+    audioClips:
+    - {fileID: 8300000, guid: 0b90a3d920f1ba34f8bac43d3c364ba8, type: 3}
+  - audioID: ChosePlant
+    audioClips:
+    - {fileID: 8300000, guid: c9c04768b5c680f43a7c7ae763097f74, type: 3}
+  - audioID: PlantPlant
+    audioClips:
+    - {fileID: 8300000, guid: 93c49e5f8d59bc74b98eb03929459289, type: 3}
+  - audioID: PeaShoot
+    audioClips:
+    - {fileID: 8300000, guid: 166ea1756398c3c4fabc8c9d12208d16, type: 3}
+    - {fileID: 8300000, guid: 172eb883192f8824eac5470960d755e3, type: 3}
+  - audioID: ZombieChomp
+    audioClips:
+    - {fileID: 8300000, guid: 9a8c76f1a902f404abeb4eba3ab1164e, type: 3}
+    - {fileID: 8300000, guid: fabe03fa07fae4843b03e6343359a2a5, type: 3}
+  - audioID: ImpactBaseZombie
+    audioClips:
+    - {fileID: 8300000, guid: 0532042e561443e4392e3e51cfb4f6c0, type: 3}
+    - {fileID: 8300000, guid: f9894866501b8114c93a7a05acb546ef, type: 3}
+    - {fileID: 8300000, guid: 19c7ffd7a8408074db6e65accfd36aca, type: 3}
+    - {fileID: 8300000, guid: 02eb5af0babd394469cb21e40ab264b6, type: 3}
+  - audioID: ImpactConeZombie
+    audioClips:
+    - {fileID: 8300000, guid: f6740657a76abc74f9b82aa5f6808c6c, type: 3}
+    - {fileID: 8300000, guid: 471d4ac0be6a39d42851f1377aa06084, type: 3}
+  - audioID: ImpactBucketZombie
+    audioClips:
+    - {fileID: 8300000, guid: d692b957e4a75c243ad08c639c0a6871, type: 3}
+    - {fileID: 8300000, guid: 7d7b955f78780274091f0580b6d85e2d, type: 3}
+    - {fileID: 8300000, guid: 624e8fbb1277bb145a232e9b8434e8b4, type: 3}
+    - {fileID: 8300000, guid: 9c561ae0596af6441af7851856c98cd1, type: 3}

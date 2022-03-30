@@ -42,6 +42,7 @@ public class MapGenerator : MonoBehaviour
         Plant newPlant = Instantiate<Plant>(LocalData.instance.GetPlantArticle(id).plantPrefab, plantsTran);
         newPlant.transform.localPosition = pos;
         grids[index] = newPlant.gameObject;
+        AudioManager.instance.PlaySound("PlantPlant", point);
         return true;
     }
 

@@ -24,5 +24,7 @@ public class PeaShooter : Plant
         bullet.onDestroy = ()=>{
             Pool.DestroyObject(bulletObj, bulletPrefab);
         };
+        //音效
+        AudioManager.instance.PlaySound("PeaShoot", transform.position + Vector3.forward*5);
     }
 }

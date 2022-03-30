@@ -18,4 +18,4 @@ MonoBehaviour:
   - id: 1
     zombiePrefab: {fileID: 1258845572156226761, guid: e0e7b4054a2a7634dadc4cc545754543, type: 3}
   - id: 2
-    zombiePrefab: {fileID: 564507598209571222, guid: 9cd42b45a5a9134468b4ca76532cd2e6, type: 3}
+    zombiePrefab: {fileID: 1699092807, guid: 9cd42b45a5a9134468b4ca76532cd2e6, type: 3}
