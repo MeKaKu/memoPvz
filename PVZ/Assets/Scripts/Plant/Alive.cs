@@ -7,7 +7,7 @@ public class Alive : MonoBehaviour
     [Header(">生命")]
     public float maxHp;
     public float hp{get;protected set;}
-    protected bool isDead;
+    public bool isDead{get;protected set;}
 
     public event System.Action onDeath;
 

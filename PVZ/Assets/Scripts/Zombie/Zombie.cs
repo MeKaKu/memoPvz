@@ -145,17 +145,18 @@ public class Zombie : Alive
 
     IEnumerator AnimateCarPressDie(float duration){
         float percent = 0;
-        animator.speed = 0;
-        Vector3 targetScale = new Vector3(1, 0, 1);
-        Vector3 targetPosition = transform.localPosition - Vector3.up * .5f;
-        Vector3 targetRotation = new Vector3(0, 0, 90);
+        //animator.speed = 0;
+        Vector3 originPosition = transform.localPosition;
+        Vector3 targetScale = new Vector3(.1f, 1, 1);
+        Vector3 targetPosition = transform.localPosition - Vector3.up * .3f;
+        Vector3 targetRotation = new Vector3(0, 0, -90);
         while(percent < 1){
             percent += Time.deltaTime / duration;
             //
-            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, percent);
-            transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, targetRotation, percent);
+            transform.localPosition = Vector3.Lerp(originPosition, targetPosition, percent);
+            transform.localEulerAngles = Vector3.Lerp(Vector3.zero, targetRotation, percent * 1.5f);
             //
-            transform.localScale = Vector3.Lerp(Vector3.one, targetScale, percent);
+            transform.localScale = Vector3.Lerp(Vector3.one, targetScale, percent * percent);
             yield return null;
         }
         Die();

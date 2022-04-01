@@ -8,7 +8,8 @@ public class MapGenerator : MonoBehaviour
     public Transform gridPrefab;//格子的预制体
     public Transform floor;
     public LayerMask layerMask;
-    //public GameObject carPrefab;//小推车的预制体
+    public LittleCar carPrefab;//小推车的预制体
+    public Transform cars;
     public Transform plantsTran;
     int n, m;
     GameObject[] grids;
@@ -26,6 +27,11 @@ public class MapGenerator : MonoBehaviour
     public void GenerateMap(){
         floor.localScale = deltaSize;
         floor.localPosition = Vector3.right*(deltaSize.x*.5f - .5f);
+        //TODO:car
+        for(int i = 0; i < m; i++){
+            LittleCar car = Instantiate<LittleCar>(carPrefab, cars);
+            car.transform.localPosition = new Vector3(-i-1, -m/2 + i, 0);
+        }
     }
 
     public Vector3 ToGridPos(Vector3 pos){
