@@ -3534,7 +3534,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 8d41773f1ce85254b990255aa9728890, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 0
@@ -4635,6 +4635,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1393964982}
   - component: {fileID: 1393964983}
+  - component: {fileID: 1393964984}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -4669,6 +4670,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.59139, y: 6.168122, z: 1}
   m_Center: {x: 0.2396015, y: 0.29371992, z: 0}
+--- !u!114 &1393964984
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1393964981}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bdec944ed4223654a81f5a27c2d4ac2f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHp: 1
 --- !u!1 &1429391870
 GameObject:
   m_ObjectHideFlags: 0
@@ -4986,7 +5000,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: 309999a123e44af4ea02a52ea41c5ea6, type: 3}
-  m_Type: 0
+  m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -4994,7 +5008,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_PixelsPerUnitMultiplier: 1.5
 --- !u!222 &1490678939
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5397,15 +5411,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19c721c78156bde4ebbd0724f98a6bf7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeBeforeSpawn: 10
   waves:
-  - delayTime: 1
-    spawnInterval: 5
+  - delayTime: 5
+    spawnInterval: 10
     zombies: 0000000000000000
-  - delayTime: 1
-    spawnInterval: 4
+  - delayTime: 4
+    spawnInterval: 8
     zombies: 010000000000000001000000
-  - delayTime: 1
-    spawnInterval: 3
+  - delayTime: 4
+    spawnInterval: 9
     zombies: 000000000100000002000000000000000100000000000000
   zombiesTrans: {fileID: 1291544831}
 --- !u!4 &1559398099 stripped
@@ -6674,7 +6689,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 564507598209571223, guid: 9cd42b45a5a9134468b4ca76532cd2e6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 564507598209571223, guid: 9cd42b45a5a9134468b4ca76532cd2e6, type: 3}
       propertyPath: m_LocalPosition.y
@@ -6974,7 +6989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1258845572156226760, guid: e0e7b4054a2a7634dadc4cc545754543, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 1258845572156226760, guid: e0e7b4054a2a7634dadc4cc545754543, type: 3}
       propertyPath: m_LocalPosition.y
@@ -7279,7 +7294,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4212639455013027462, guid: 87bfef3e95c7e7145a3125e60b3449a3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 8
+      value: -8
       objectReference: {fileID: 0}
     - target: {fileID: 4212639455013027462, guid: 87bfef3e95c7e7145a3125e60b3449a3, type: 3}
       propertyPath: m_LocalPosition.y

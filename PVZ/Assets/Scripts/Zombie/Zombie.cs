@@ -61,7 +61,7 @@ public class Zombie : Alive
         }
     }
     protected virtual void Attack(Collider hit){
-        Plant plant = hit.gameObject.GetComponent<Plant>();
+        Alive plant = hit.gameObject.GetComponent<Plant>();
         if(plant != null) plant.TakeDamage(attackPower);
     }
 
@@ -133,5 +133,31 @@ public class Zombie : Alive
     public override void TakeHit(float damage, Vector3 hitPoint){
         AudioManager.instance.PlaySound("ImpactBaseZombie", hitPoint);
         base.TakeHit(damage, hitPoint);
+    }
+
+    public void CarPressDie(float duration){
+        isMoving = false;
+        if(isDead) return;
+        //TakeDamage(hp - .1f);
+        isDead = true;
+        StartCoroutine(AnimateCarPressDie(duration));
+    }
+
+    IEnumerator AnimateCarPressDie(float duration){
+        float percent = 0;
+        animator.speed = 0;
+        Vector3 targetScale = new Vector3(1, 0, 1);
+        Vector3 targetPosition = transform.localPosition - Vector3.up * .5f;
+        Vector3 targetRotation = new Vector3(0, 0, 90);
+        while(percent < 1){
+            percent += Time.deltaTime / duration;
+            //
+            transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, percent);
+            transform.localEulerAngles = Vector3.Lerp(transform.localEulerAngles, targetRotation, percent);
+            //
+            transform.localScale = Vector3.Lerp(Vector3.one, targetScale, percent);
+            yield return null;
+        }
+        Die();
     }
 }

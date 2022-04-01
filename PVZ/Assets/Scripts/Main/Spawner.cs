@@ -11,7 +11,9 @@ public class Spawner : MonoBehaviour
     private float nextSpawnerTime;//下一次生成僵尸的时间
     private int remainToSpawner;//当前波剩余待生成僵尸数目
     private int remainAlive;//当前剩余存活僵尸
+    public event System.Action onStartSpawn;//开始产生僵尸事件
     public event System.Action<int> onNewWave;//每一波开始时触发
+    public event System.Action onNoWave;//清除完所有波时触发
     public Transform zombiesTrans;
     int prePosY;
     int n;
@@ -21,7 +23,8 @@ public class Spawner : MonoBehaviour
         Invoke("StartSpawn", timeBeforeSpawn);
     }
 
-    void StartSpawn(){
+    public void StartSpawn(){
+        onStartSpawn?.Invoke();
         AudioManager.instance.PlaySound("StartSpawnZombies", Vector3.zero);
         n = Mathf.RoundToInt(FindObjectOfType<MapGenerator>().deltaSize.y*.5f-.5f);
         rand = new System.Random((int)Time.time);
