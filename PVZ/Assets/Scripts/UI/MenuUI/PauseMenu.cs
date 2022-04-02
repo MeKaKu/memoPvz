@@ -14,6 +14,13 @@ public class PauseMenu : BaseUI
         sliders[2].value = AudioManager.instance.soundVolumePercent;//音效
     }
 
+    /// <summary>
+    /// 暂停游戏
+    /// </summary>
+    public void PauseGame(){
+        Show();
+        Time.timeScale = 0;
+    }
     /// <summary>继续游戏
     /// 从暂停菜单返回游戏
     /// </summary>

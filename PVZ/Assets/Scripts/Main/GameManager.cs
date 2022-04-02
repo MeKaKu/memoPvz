@@ -2,12 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     Player player;//玩家生命体
     Spawner spawner;//僵尸生成器
     public PauseMenu pauseMenu;//暂停菜单
+    public Button pauseButton;
     private void Start() {
         //初始化玩家
         player = FindObjectOfType<Player>();
@@ -32,14 +34,13 @@ public class GameManager : MonoBehaviour
     private void Update()
     {
         if(Input.GetKeyDown(KeyCode.Escape)){
-            pauseMenu.Show();
-            Time.timeScale = 0;
+            pauseMenu.PauseGame();
         }
     }
 
     void GameOver(){
         //
-
+        
     }
 
     void GameWin(){
