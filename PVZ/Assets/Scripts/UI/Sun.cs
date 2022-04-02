@@ -40,7 +40,7 @@ public class Sun : MonoBehaviour, IPointerEnterHandler, IPointerDownHandler, IPo
     }
     private void ListenFall(){
         if(isFalling){
-            rect.anchoredPosition -= new Vector2(0, fallSpeed);
+            rect.anchoredPosition -= new Vector2(0, fallSpeed * Time.timeScale);
             if(rect.anchoredPosition.y <= toPosY){
                 isFalling = false;
                 StartExist();

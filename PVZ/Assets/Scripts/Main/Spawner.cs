@@ -55,6 +55,7 @@ public class Spawner : MonoBehaviour
             onNewWave?.Invoke(curWaveInd + 1);
         }else{
             //TODO:游戏胜利
+            onNoWave?.Invoke();
         }
         curWaveInd ++;
     }
