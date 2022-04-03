@@ -31,6 +31,8 @@ public class LittleCar : MonoBehaviour
     }
     public void StartRun(){
         isStarted = true;
+        AudioManager.instance.PlaySound("LittleCar");
+        Invoke("DestroyMe", 20);
     }
 
     IEnumerator ShowCar(){
@@ -42,5 +44,9 @@ public class LittleCar : MonoBehaviour
             transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, percent * percent);
             yield return null;
         }
+    }
+
+    void DestroyMe(){
+        Destroy(gameObject);
     }
 }

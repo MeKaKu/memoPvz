@@ -68,6 +68,7 @@ public class AudioManager : MonoBehaviour
     public void PlaySound(AudioClip audioClip){
         if(audioClip != null){
             soundSource2D.clip = audioClip;
+            soundSource2D.Play();
         }
     }
     //播放指定音源
@@ -121,6 +122,13 @@ public class AudioManager : MonoBehaviour
             percent += speed;
         }
         musicSources[currentMusicSourceIndex ^ 1].Stop();//停止播放上一个音乐
+    }
+
+    public void PauseMusic(){
+        musicSources[currentMusicSourceIndex].Pause();
+    }
+    public void RecoverMusic(){
+        musicSources[currentMusicSourceIndex].Play();
     }
 
     //修改音量

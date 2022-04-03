@@ -28,13 +28,18 @@ public class GameManager : MonoBehaviour
             throw new System.Exception("No MenuManager");
         }
         //GameOver();
+        GameStart();
     }
 
-    
+    void GameStart(){
+        AudioManager.instance.PlayMusic("GameBg01");
+    }
 
     void GameOver(){
         //UI
         menuManager.ShowGameOver();
+        //音效
+        AudioManager.instance.PlaySound("EatHeadScream", Vector3.zero);
     }
 
     void GameWin(){

@@ -61,3 +61,42 @@ MonoBehaviour:
   - audioID: StartSpawnZombies
     audioClips:
     - {fileID: 8300000, guid: b09d8d9fb56a6d24ba9f7f528624a4c5, type: 3}
+  - audioID: PoleZombie
+    audioClips:
+    - {fileID: 8300000, guid: 173e4721d33b6f9489b0cd7e39fdf446, type: 3}
+  - audioID: ChoosePlantBg
+    audioClips:
+    - {fileID: 8300000, guid: 9a50704e6e33b0e468010542f0972d3f, type: 3}
+  - audioID: GameBg01
+    audioClips:
+    - {fileID: 8300000, guid: 54d3ff38b46185c4ba4fff24d2974d0c, type: 3}
+  - audioID: MainMenuBg
+    audioClips:
+    - {fileID: 8300000, guid: cf45fbd747d518a41bd157053c79eb8b, type: 3}
+  - audioID: EatHeadScream
+    audioClips:
+    - {fileID: 8300000, guid: 3ce5e62af4839fe4bb00e6dfe3535ac6, type: 3}
+  - audioID: GameLost
+    audioClips:
+    - {fileID: 8300000, guid: 32e88eb2956c1954a845e8aba3977d76, type: 3}
+  - audioID: GameWin
+    audioClips:
+    - {fileID: 8300000, guid: c1632256ead339e4f9d018d92a0ee40c, type: 3}
+  - audioID: ZombieLaugh
+    audioClips:
+    - {fileID: 8300000, guid: 9dd963d137acb9f42a1668d8d199670c, type: 3}
+  - audioID: LittleCar
+    audioClips:
+    - {fileID: 8300000, guid: d89ba643fc7a7e0429c724044dce9531, type: 3}
+  - audioID: ButtonHover
+    audioClips:
+    - {fileID: 8300000, guid: e67ca62994cd14d4c9ff88c165fa9901, type: 3}
+  - audioID: Button
+    audioClips:
+    - {fileID: 8300000, guid: 0c8595eab515beb4fa189422f8122367, type: 3}
+  - audioID: GamePause
+    audioClips:
+    - {fileID: 8300000, guid: 759cfa2237420e74cab5417a23fe429c, type: 3}
+  - audioID: ButtonClick
+    audioClips:
+    - {fileID: 8300000, guid: 7c541831779a6ed43bda76180603474e, type: 3}

@@ -28,6 +28,7 @@ public class GameOverPlane : BaseUI
     }
 
     void ShowOverMenu(){
+        AudioManager.instance.PlaySound("GameLost", Vector3.zero);
         overMenu.SetActive(true);
     }
 }

@@ -22,6 +22,9 @@ public class LevelButton : BaseUI, IPointerEnterHandler, IPointerExitHandler, IP
         image = GetComponent<Image>();
         normalSprite = image.sprite;
     }
+    private void Start() {
+        AudioManager.instance.PlayMusic("MainMenuBg");
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         rect.anchoredPosition = originPos - Vector2.up * 5;
@@ -30,6 +33,7 @@ public class LevelButton : BaseUI, IPointerEnterHandler, IPointerExitHandler, IP
     public void OnPointerEnter(PointerEventData eventData)
     {
         image.sprite = hoverSprite;
+        AudioManager.instance.PlaySound("ButtonHover");
     }
 
     public void OnPointerExit(PointerEventData eventData)
@@ -45,6 +49,7 @@ public class LevelButton : BaseUI, IPointerEnterHandler, IPointerExitHandler, IP
         //TODO:按下button事件
         Invoke("ChangeSprite", .1f);
         Invoke("OnLevelButtonClicked", delayTime);
+        AudioManager.instance.PlaySound("ZombieLaugh");
     }
 
     void ChangeSprite(){

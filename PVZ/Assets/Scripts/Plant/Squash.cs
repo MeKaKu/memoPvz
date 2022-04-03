@@ -18,6 +18,8 @@ public class Squash : Plant
             animator.SetBool("attack", true);
             GetComponent<SpriteRenderer>().sortingOrder = 6;
             //transform.localPosition += Vector3.right;
+            //
+            AudioManager.instance.PlaySound("Squash", transform.position);
             //TODO:压瘪敌人2333
             foreach(Collider collider in colliders){
                 collider.gameObject.GetComponent<Zombie>().PressDie(.5f, .5f);

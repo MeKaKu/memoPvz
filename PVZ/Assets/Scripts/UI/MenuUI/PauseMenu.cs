@@ -18,6 +18,8 @@ public class PauseMenu : BaseUI
     /// 暂停游戏
     /// </summary>
     public void PauseGame(){
+        AudioManager.instance.PauseMusic();
+        AudioManager.instance.PlaySound("GamePause");
         Show();
         Time.timeScale = 0;
     }
@@ -25,6 +27,7 @@ public class PauseMenu : BaseUI
     /// 从暂停菜单返回游戏
     /// </summary>
     public void BackToGame(){
+        AudioManager.instance.RecoverMusic();
         Hide();
         Time.timeScale = 1;
     }
