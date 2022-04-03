@@ -15,11 +15,13 @@ public class PoleZombie : BaseZombie
             if(isDead ) return;
             if(!animator.GetBool("jump")) AudioManager.instance.PlaySound("PoleZombie", transform.position);
             animator.SetBool("jump", true);
+            col.enabled = false;
         }
         else base.Attack(hit);
     }
 
     void JumpCompleted(){
         jump = true;
+        col.enabled = true;
     }
 }

@@ -37,6 +37,7 @@ public class GameManager : MonoBehaviour
     void GameStart(){
         //背景音乐
         AudioManager.instance.PlayMusic("GameBg01");
+        spawner.DelayStartSpawn(10);
     }
 
     void GameOver(){

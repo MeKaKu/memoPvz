@@ -91,11 +91,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   assetId: 0
-  isSunEnough: 0
   isMouseEnter: 0
   isChosen: 0
   infoText: {fileID: 3233078354048844528}
   cursorTex: {fileID: 2800000, guid: 552f8576236d9844790ceb3769e44767, type: 3}
+  isSunEnough: 0
 --- !u!1 &3233078354048844532
 GameObject:
   m_ObjectHideFlags: 0

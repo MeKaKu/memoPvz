@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class Spawner : MonoBehaviour
 {
-    public float timeBeforeSpawn = 10;
     public Wave[] waves;
     private Wave curWave;//当前波
     private int curWaveInd;//当前波数Index
@@ -20,8 +19,8 @@ public class Spawner : MonoBehaviour
     System.Random rand;
     public Vector3 lastDeadZombiePos;
 
-    private void Start() {
-        Invoke("StartSpawn", timeBeforeSpawn);
+    public void DelayStartSpawn(float duration) {
+        Invoke("StartSpawn", duration);
     }
 
     public void StartSpawn(){

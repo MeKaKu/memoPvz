@@ -7,7 +7,6 @@ using UnityEngine.EventSystems;
 [RequireComponent(typeof(Image))]
 public class Card : Chooseable
 {
-    public PlantAssetId assetId = PlantAssetId.None;
     Image image;//显示的图片
     CDMask cdMask;//cd遮罩
     public bool isSunEnough;//阳光是否足够
@@ -44,5 +43,16 @@ public class Card : Chooseable
             image.color = Color.white * .75f;
         }
         isSunEnough = _isSunEnough;
+    }
+
+    public override void ShowInfo()
+    {
+        base.ShowInfo();
+        if(isCD){
+            infoText.text = "<color=#FF0000>recharging...</color>\n" + infoText.text;
+        }
+        else if(!isSunEnough){
+            infoText.text = "<color=#FF0000>not enough sun</color>\n" + infoText.text;
+        }
     }
 }

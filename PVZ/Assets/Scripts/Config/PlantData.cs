@@ -15,5 +15,6 @@ public class PlantData : ScriptableObject
         public Plant plantPrefab;
         public float cardCD;
         public int sunCost;
+        public string sampleInfo;
     }
 }

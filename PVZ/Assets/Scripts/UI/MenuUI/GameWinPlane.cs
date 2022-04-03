@@ -26,6 +26,7 @@ public class GameWinPlane : BaseUI
         StartCoroutine(AnimateCollectCard(3));
         //音乐
         AudioManager.instance.PlaySound("GameWin");
+        AudioManager.instance.PauseMusic();
     }
     //下一关
     public void NextLevel(){

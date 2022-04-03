@@ -17,7 +17,7 @@ public class Zombie : Alive
     [Header(">动画")]
     public Animator animator;//动画控制器
     private float localRefactor = .01f;
-    private Collider col;
+    protected Collider col;
     private Vector3 headpos;
     Transform headTrans;
     public event System.Action<Vector3> onZombieDead;

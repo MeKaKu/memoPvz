@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class Chooseable : BaseUI, IPointerEnterHandler, IPointerExitHandler, IPointerDownHandler
 {
+    public PlantAssetId assetId = PlantAssetId.None;
     public bool isMouseEnter;//鼠标是否进入
     public bool isChosen;//是否被选中
     public event System.Action<Chooseable> onPointerEnter;
@@ -39,7 +40,8 @@ public class Chooseable : BaseUI, IPointerEnterHandler, IPointerExitHandler, IPo
     public void UndoMouseHover(){
         Cursor.SetCursor(null, Vector2.zero, CursorMode.Auto);
     }
-    public void ShowInfo(){
+    public virtual void ShowInfo(){
+        infoText.text = LocalData.instance.GetPlantArticle(assetId).sampleInfo;
         infoText.gameObject.SetActive(true);
     }
     public void HideInfo(){
