@@ -100,3 +100,17 @@ MonoBehaviour:
   - audioID: ButtonClick
     audioClips:
     - {fileID: 8300000, guid: 7c541831779a6ed43bda76180603474e, type: 3}
+  - audioID: Squash
+    audioClips:
+    - {fileID: 8300000, guid: 1a68b50d502c29244a8db20dfad92def, type: 3}
+  - audioID: ZombieAoAoAo
+    audioClips:
+    - {fileID: 8300000, guid: e605aef83a1eba14d9234e827e825640, type: 3}
+    - {fileID: 8300000, guid: 2f23cb5ba4b320a4cb875ea0568bbadc, type: 3}
+    - {fileID: 8300000, guid: 84285e1351df2154d9833b011eeb0d86, type: 3}
+    - {fileID: 8300000, guid: ff0a992568922524382cdfe61df6a484, type: 3}
+    - {fileID: 8300000, guid: 8f6e6719e14112f4fb299678898d66f3, type: 3}
+    - {fileID: 8300000, guid: 3ac5a249f8d132e48b4b98049607847c, type: 3}
+  - audioID: FrozenZombie
+    audioClips:
+    - {fileID: 8300000, guid: 05c0e14457f22c94a86af3c833b99149, type: 3}

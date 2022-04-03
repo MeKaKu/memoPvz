@@ -20,6 +20,7 @@ public class Zombie : Alive
     private Collider col;
     private Vector3 headpos;
     Transform headTrans;
+    public event System.Action<Vector3> onZombieDead;
     protected override void Start() {
         base.Start();
         animator.speed = moveSpeed;
@@ -168,5 +169,24 @@ public class Zombie : Alive
             yield return null;
         }
         Die();
+    }
+
+    public override void Die()
+    {
+        onZombieDead?.Invoke(transform.position);
+        base.Die();
+    }
+
+    public void SlowDown(float percent, float duration, Color changeColor){
+        CancelInvoke("Recover");
+        AudioManager.instance.PlaySound("FrozenZombie", transform.position);
+        animator.speed = percent;
+        transform.Find("Body").GetComponent<SpriteRenderer>().color = changeColor;
+        Invoke("Recover", duration);
+    }
+
+    void Recover(){
+        animator.speed = 1;
+        transform.Find("Body").GetComponent<SpriteRenderer>().color = Color.white;
     }
 }

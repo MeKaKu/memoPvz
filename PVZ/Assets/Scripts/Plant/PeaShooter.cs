@@ -26,5 +26,7 @@ public class PeaShooter : Plant
         };
         //音效
         AudioManager.instance.PlaySound("PeaShoot", transform.position + Vector3.forward*5);
+        //检查子弹在产生时是否在敌人碰撞体里面
+        bullet.CheckCollisionOnStart();
     }
 }

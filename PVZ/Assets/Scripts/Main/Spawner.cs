@@ -18,6 +18,7 @@ public class Spawner : MonoBehaviour
     int prePosY;
     int n;
     System.Random rand;
+    public Vector3 lastDeadZombiePos;
 
     private void Start() {
         Invoke("StartSpawn", timeBeforeSpawn);
@@ -44,7 +45,14 @@ public class Spawner : MonoBehaviour
             prePosY = curPosY;
             newZombie.transform.localPosition = new Vector3(9, curPosY, curPosY * .0001f + .0005f);
             newZombie.onDeath += OnZombieDead;
+            newZombie.onZombieDead += (pos)=>{
+                lastDeadZombiePos = pos;
+            };
             remainToSpawner --;
+            //僵尸嗷嗷叫
+            if(index == 0){
+                AudioManager.instance.PlaySound("ZombieAoAoAo", newZombie.transform.position);
+            }
         }
     }
     void NextWave(){

@@ -8,6 +8,9 @@ public class GameManager : MonoBehaviour
     Player player;//玩家生命体
     Spawner spawner;//僵尸生成器
     MenuManager menuManager;//UI
+
+    [Header(">过关奖励")]
+    public PlantAssetId awardPlant;//过关将得到的植物
     
     private void Start() {
         //初始化玩家
@@ -32,6 +35,7 @@ public class GameManager : MonoBehaviour
     }
 
     void GameStart(){
+        //背景音乐
         AudioManager.instance.PlayMusic("GameBg01");
     }
 
@@ -44,7 +48,8 @@ public class GameManager : MonoBehaviour
 
     void GameWin(){
         //UI
-        menuManager.ShowGameWin();
+        Vector2 screenPos = Camera.main.WorldToScreenPoint(spawner.lastDeadZombiePos);
+        menuManager.DropCard(screenPos, awardPlant);
     }
 
 }

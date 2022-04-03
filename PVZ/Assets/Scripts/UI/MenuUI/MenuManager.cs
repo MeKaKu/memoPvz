@@ -24,7 +24,8 @@ public class MenuManager : MonoBehaviour
         gameOverPlane.Show();
     }
 
-    public void ShowGameWin(){
+    public void DropCard(Vector2 pos, PlantAssetId plantAssetId){
         gameWinPlane.Show();
+        gameWinPlane.ShowCard(pos, plantAssetId);
     }
 }

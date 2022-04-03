@@ -64,7 +64,7 @@ public class Bullet : MonoBehaviour
         isMoving = false;
         Alive alive = collider.gameObject.GetComponent<Alive>();
         if(alive != null){
-            alive.TakeHit(damage, hitPos);
+            ImpactObject(alive, hitPos);
         }
         CancelInvoke("DestroyBullet");
         //击中特效
@@ -72,6 +72,10 @@ public class Bullet : MonoBehaviour
             animateHitEffect = AnimateHitEffect();
             StartCoroutine(animateHitEffect);
         }
+    }
+
+    public virtual void ImpactObject(Alive alive, Vector3 hitPos){
+        alive.TakeHit(damage, hitPos);
     }
 
     IEnumerator AnimateHitEffect(){

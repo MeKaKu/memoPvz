@@ -14,7 +14,7 @@ public class LevelButton : BaseUI, IPointerEnterHandler, IPointerExitHandler, IP
     Vector2 originPos;
     Sprite normalSprite;
     public Sprite hoverSprite;
-    public float delayTime = 2;
+    public float delayTime = 4;
     bool isClicked;//是否被点击过了
     private void Awake() {
         rect = GetComponent<RectTransform>();
