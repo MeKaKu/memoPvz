@@ -12,7 +12,7 @@ public class LittleCar : MonoBehaviour
     }
     private void Update() {
         Collider[] colliders = 
-            Physics.OverlapBox(carTrans.position, Vector3.one * .2f, Quaternion.identity, LayerMask.GetMask("Zombie"));
+            Physics.OverlapBox(carTrans.position, new Vector3(.2f, .02f, .01f), Quaternion.identity, LayerMask.GetMask("Zombie"));
         if(isStarted){
             //
             foreach(Collider collider in colliders){

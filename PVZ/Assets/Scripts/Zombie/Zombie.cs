@@ -18,13 +18,23 @@ public class Zombie : Alive
     public Animator animator;//动画控制器
     private float localRefactor = .01f;
     private Collider col;
+    private Vector3 headpos;
+    Transform headTrans;
     protected override void Start() {
         base.Start();
         animator.speed = moveSpeed;
         col = GetComponent<Collider>();
+        headTrans = transform.Find("Head");
     }
     protected virtual void Update(){
         ListenAttack();
+    }
+
+    private void LateUpdate() {
+        if(isDead){
+            //fixed head position
+            headTrans.position = headpos;
+        }
     }
 
     protected virtual void ListenAttack(){
@@ -53,8 +63,9 @@ public class Zombie : Alive
         }
     }
     protected virtual void Attack(Collider hit){
+        if(isDead) return;
         //音效
-        if(!isDead) AudioManager.instance.PlaySound("ZombieChomp", transform.position);
+        AudioManager.instance.PlaySound("ZombieChomp", transform.position);
         Alive plant = hit.gameObject.GetComponent<Alive>();
         if(plant != null) plant.TakeDamage(attackPower);
     }
@@ -69,6 +80,7 @@ public class Zombie : Alive
         hp -= damage;
         if(hp <= 0){
             isDead = true;
+            headpos = headTrans.position;
             //掉头
             animator.SetBool("lostHead", true);
             animator.SetLayerWeight(1, 1);
