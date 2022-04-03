@@ -15,4 +15,5 @@ public enum ZombieAssetId{
     BaseZombie,//基础僵尸
     ConeZombie,//路障僵尸
     BucketZombie,//铁桶僵尸
+    PoleZombie,//撑杆跳僵尸
 }

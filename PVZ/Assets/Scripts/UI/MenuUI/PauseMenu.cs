@@ -34,7 +34,7 @@ public class PauseMenu : BaseUI
     public void RestartGame(){
         //TODO:restart
         Time.timeScale = 1;
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(LocalData.instance.curLevel);
     }
     /// <summary>
     /// 返回主菜单

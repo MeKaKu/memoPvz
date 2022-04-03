@@ -2,14 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     Player player;//玩家生命体
     Spawner spawner;//僵尸生成器
-    public PauseMenu pauseMenu;//暂停菜单
-    public Button pauseButton;
+    MenuManager menuManager;//UI
+    
     private void Start() {
         //初始化玩家
         player = FindObjectOfType<Player>();
@@ -24,27 +23,23 @@ public class GameManager : MonoBehaviour
         }
         spawner.onNoWave += GameWin;
         //初始化暂停菜单
-        //pauseMenu = FindObjectOfType<PauseMenu>();
-        if(pauseMenu == null){
-            throw new System.Exception("No PauseMenu");
+        menuManager = FindObjectOfType<MenuManager>();
+        if(menuManager == null){
+            throw new System.Exception("No MenuManager");
         }
-        pauseMenu.Hide();
+        //GameOver();
     }
 
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Escape)){
-            pauseMenu.PauseGame();
-        }
-    }
+    
 
     void GameOver(){
-        //
-        
+        //UI
+        menuManager.ShowGameOver();
     }
 
     void GameWin(){
-        //
+        //UI
+        menuManager.ShowGameWin();
     }
 
 }

@@ -11,6 +11,7 @@ public class LocalData : MonoBehaviour
     Dictionary<PlantAssetId, PlantArticle> plantDict = new Dictionary<PlantAssetId, PlantArticle>();
     Dictionary<ZombieAssetId, ZombieArticle> zombieDict = new Dictionary<ZombieAssetId, ZombieArticle>();
     public static LocalData instance;
+    public int curLevel = 1;
     private void Awake() {
         if(instance == null){
             instance = this;

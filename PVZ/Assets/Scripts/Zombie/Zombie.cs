@@ -25,12 +25,6 @@ public class Zombie : Alive
     }
     protected virtual void Update(){
         ListenAttack();
-        Move();
-    }
-    protected virtual void Move(){
-        if(isMoving){
-            //transform.Translate(moveDir * moveSpeed * localRefactor * Time.deltaTime, Space.Self);
-        }
     }
 
     protected virtual void ListenAttack(){
@@ -55,13 +49,13 @@ public class Zombie : Alive
             if(Time.time > nextAttackTime){
                 nextAttackTime = Time.time + attackInterval;
                 Attack(colliders[0]);
-                //音效
-                if(!isDead) AudioManager.instance.PlaySound("ZombieChomp", transform.position);
             }
         }
     }
     protected virtual void Attack(Collider hit){
-        Alive plant = hit.gameObject.GetComponent<Plant>();
+        //音效
+        if(!isDead) AudioManager.instance.PlaySound("ZombieChomp", transform.position);
+        Alive plant = hit.gameObject.GetComponent<Alive>();
         if(plant != null) plant.TakeDamage(attackPower);
     }
 
@@ -84,6 +78,7 @@ public class Zombie : Alive
         }
     }
     private void AnimateDie(){
+        col.enabled = false;//关掉碰撞体
         isMoving = false;
         animator.SetBool("dead", true);
     }
@@ -95,6 +90,7 @@ public class Zombie : Alive
     /// 被炸死
     /// </summary>
     public void BoomDie(){
+        col.enabled = false;//关掉碰撞体
         isMoving = false;
         if(isDead ) return;
         TakeDamage(hp - .1f);

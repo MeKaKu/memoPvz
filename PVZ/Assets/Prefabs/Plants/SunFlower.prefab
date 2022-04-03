@@ -131,7 +131,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxHp: 25
-  interval: 25
+  interval: 24
 --- !u!65 &7231580719581101644
 BoxCollider:
   m_ObjectHideFlags: 0
