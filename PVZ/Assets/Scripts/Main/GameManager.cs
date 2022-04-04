@@ -61,6 +61,7 @@ public class GameManager : MonoBehaviour
         //背景音乐
         AudioManager.instance.PlayMusic("ChoosePlantBg");
         StartCoroutine(AnimatePreview());
+        menuManager.HideBar();
         spawner.PreviewZombie(2);
     }
 
@@ -80,6 +81,7 @@ public class GameManager : MonoBehaviour
         map.GenerateMap();
         spawner.DelayStartSpawn(10);
         sunManager.StatGenerateSun();
+        menuManager.ShowBar();
     }
 
     void GameOver(){
@@ -97,7 +99,7 @@ public class GameManager : MonoBehaviour
 
     IEnumerator AnimatePreview(){
         float percent = 0;
-        float duration = 1;
+        float duration = .5f;
         while(percent < 1){
             percent += Time.deltaTime / duration;
             yield return null;
