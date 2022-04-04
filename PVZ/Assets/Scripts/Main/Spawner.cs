@@ -18,7 +18,18 @@ public class Spawner : MonoBehaviour
     int n;
     System.Random rand;
     public Vector3 lastDeadZombiePos;
+    List<Zombie> allZombies = new List<Zombie>();
+    int zCnt;
 
+    private void Start() {
+        rand = new System.Random((int)Time.time);
+        n = Mathf.RoundToInt(FindObjectOfType<MapGenerator>().deltaSize.y*.5f-.5f);
+    }
+
+    /// <summary>
+    /// 延时开始生成僵尸
+    /// </summary>
+    /// <param name="duration">延迟时间</param>
     public void DelayStartSpawn(float duration) {
         Invoke("StartSpawn", duration);
     }
@@ -26,17 +37,34 @@ public class Spawner : MonoBehaviour
     public void StartSpawn(){
         onStartSpawn?.Invoke();
         AudioManager.instance.PlaySound("StartSpawnZombies", Vector3.zero);
-        n = Mathf.RoundToInt(FindObjectOfType<MapGenerator>().deltaSize.y*.5f-.5f);
-        rand = new System.Random((int)Time.time);
         NextWave();
+    }
+    public void PreviewZombie(int compressPercent){
+        foreach(var wave in waves){
+            foreach(var zombieInfo in wave.zombies){
+                Zombie zombiePrefab = LocalData.instance.GetZombiePrefab(zombieInfo);
+                Zombie zombie = Instantiate<Zombie>(zombiePrefab, zombiesTrans);
+                zombie.transform.localPosition = new Vector3(rand.Next(10, 13), Random.Range(-n, n + 1), 0);
+                allZombies.Add(zombie);
+            }
+        }
+        zCnt = 0;
     }
     private void Update() {
         if(remainToSpawner > 0 && Time.time > nextSpawnerTime){
             nextSpawnerTime = Time.time + curWave.spawnInterval;
             //生成僵尸
             int index = curWave.zombies.Count - remainToSpawner;
-            Zombie zombiePrefab = LocalData.instance.GetZombiePrefab(curWave.zombies[index]);
-            Zombie newZombie = Instantiate<Zombie>(zombiePrefab, zombiesTrans);
+            
+            Zombie newZombie;
+            if(zCnt < allZombies.Count){
+                newZombie = allZombies[zCnt];
+                zCnt ++;
+            }
+            else{
+                Zombie zombiePrefab = LocalData.instance.GetZombiePrefab(curWave.zombies[index]);
+                newZombie = Instantiate<Zombie>(zombiePrefab, zombiesTrans);
+            }
             int curPosY = prePosY;
             while(curPosY == prePosY){
                 curPosY = rand.Next(-n, n + 1);
@@ -47,6 +75,7 @@ public class Spawner : MonoBehaviour
             newZombie.onZombieDead += (pos)=>{
                 lastDeadZombiePos = pos;
             };
+            newZombie.StartMove();
             remainToSpawner --;
             //僵尸嗷嗷叫
             if(index == 0){

@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class CardManager : MonoBehaviour
 {
-    public List<PlantAssetId> cardIds;//卡片数据列表
+    public List<PlantAssetId> cardIds;//卡片数据列表, 已拥有
     List<Card> cards = new List<Card>();//卡片列表
     public Card cardPrefab;//卡片预制体
     public Transform cardBar;//卡片存放的位置
 
     public Card chosenCard;//当前被选中的卡片
     public ChosePlantPlane chosePlantPlane;//悬浮显示选中的植物
+    public int cardSlotSize = 6;
     void Start(){
-        GenerateCards();
+        //GenerateCards();
     }
 
     void Update(){
@@ -29,7 +30,10 @@ public class CardManager : MonoBehaviour
         }
     }
 
-    void GenerateCards(){
+    /// <summary>
+    /// 生成卡片
+    /// </summary>
+    public void AutoGenerateCards(){
         foreach(var cardId in cardIds){
             Card card = Instantiate<Card>(cardPrefab, cardBar);
             card.assetId = cardId;

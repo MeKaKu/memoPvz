@@ -11,5 +11,6 @@ public class ZombieData : ScriptableObject
     public class ZombieArticle{
         public ZombieAssetId id;
         public Zombie zombiePrefab;
+        public Sprite icon;
     }
 }

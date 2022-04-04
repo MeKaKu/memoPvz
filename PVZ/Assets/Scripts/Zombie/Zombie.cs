@@ -23,9 +23,12 @@ public class Zombie : Alive
     public event System.Action<Vector3> onZombieDead;
     protected override void Start() {
         base.Start();
-        animator.speed = moveSpeed;
+        animator.speed = 0;
         col = GetComponent<Collider>();
         headTrans = transform.Find("Head");
+    }
+    public void StartMove(){
+        animator.speed = moveSpeed;
     }
     protected virtual void Update(){
         ListenAttack();

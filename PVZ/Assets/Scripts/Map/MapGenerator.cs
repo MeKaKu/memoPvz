@@ -17,7 +17,7 @@ public class MapGenerator : MonoBehaviour
         n = Mathf.RoundToInt(deltaSize.x);
         m = Mathf.RoundToInt(deltaSize.y);
         grids = new GameObject[n * m];
-        GenerateMap();
+        //GenerateMap();
     }
 
     void Update(){

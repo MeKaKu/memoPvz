@@ -20,8 +20,14 @@ public class SunManager : MonoBehaviour
 
     private void Start() {
         sunNum = startSunNum;
-        nextSpawnTime = Time.time + interval;
+        nextSpawnTime = float.MaxValue;
         sunNumText.text = sunNum.ToString();
+    }
+    /// <summary>
+    /// 开始生成阳光
+    /// </summary>
+    public void StatGenerateSun(){
+        nextSpawnTime = Time.time + interval;
     }
 
     private void Update() {
