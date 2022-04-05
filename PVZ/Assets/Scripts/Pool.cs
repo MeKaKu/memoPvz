@@ -8,6 +8,7 @@ public class Pool : MonoBehaviour
     static Dictionary<GameObject, List<GameObject> > dict = new Dictionary<GameObject, List<GameObject>>();
     void Start() {
         trans = GetComponent<Transform>();
+        dict.Clear();
     }
     static public GameObject GetObject(GameObject prefab){
         GameObject obj = null;

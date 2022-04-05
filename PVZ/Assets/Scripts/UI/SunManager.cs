@@ -19,7 +19,7 @@ public class SunManager : MonoBehaviour
     #endregion
 
     private void Start() {
-        sunNum = startSunNum;
+        sunNum = 0;
         nextSpawnTime = float.MaxValue;
         sunNumText.text = sunNum.ToString();
     }
@@ -27,6 +27,8 @@ public class SunManager : MonoBehaviour
     /// 开始生成阳光
     /// </summary>
     public void StatGenerateSun(){
+        sunNum = startSunNum;
+        sunNumText.text = sunNum.ToString();
         nextSpawnTime = Time.time + interval;
     }
 

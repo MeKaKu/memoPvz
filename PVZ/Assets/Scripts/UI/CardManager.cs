@@ -12,6 +12,13 @@ public class CardManager : MonoBehaviour
     public Card chosenCard;//当前被选中的卡片
     public ChosePlantPlane chosePlantPlane;//悬浮显示选中的植物
     public int cardSlotSize = 6;
+
+    //选择携带的植物相关
+    public Transform allCardBar;//所有植物卡片存放的位置
+    bool isChoosingPlant;//是否正在选择携带的植物
+    public GameObject allPlantPlane;//所有植物面板
+    List<Card> allCards = new List<Card>();//所有卡片
+    public event System.Action onCompleteChoosePlant;
     void Start(){
         //GenerateCards();
     }
@@ -19,7 +26,9 @@ public class CardManager : MonoBehaviour
     void Update(){
         //TODO:卡片状态
         foreach(Card card in cards){
-            card.EnoughSun(SunManager.sunNum >= card.sunCost);
+            if(!isChoosingPlant)
+                card.EnoughSun(SunManager.sunNum >= card.sunCost);
+            else card.EnoughSun(true);
         }
         if(Input.GetMouseButtonDown(1)){
             //鼠标右键按下
@@ -35,13 +44,30 @@ public class CardManager : MonoBehaviour
     /// </summary>
     public void AutoGenerateCards(){
         foreach(var cardId in cardIds){
-            Card card = Instantiate<Card>(cardPrefab, cardBar);
-            card.assetId = cardId;
-            //card.cardSprite = LocalData.instance.GetPlantArticle(cardId).cardSprite;
-            card.onPointerEnter += OnCardPointerEnter;
-            card.onPointerDown += OnCardPointerDown;
-            cards.Add(card);
+            cards.Add(GenerateCard(cardId));
         }
+    }
+    Card GenerateCard(PlantAssetId cardId){
+        Card card = Instantiate<Card>(cardPrefab, cardBar);
+        card.assetId = cardId;
+        card.isSunEnough = true;
+        card.onPointerEnter += OnCardPointerEnter;
+        card.onPointerDown += OnCardPointerDown;
+        return card;
+    }
+    public void ShowAllPlant(){
+        isChoosingPlant = true;
+        foreach(var cardId in cardIds){
+            Card card = GenerateCard(cardId);
+            card.transform.SetParent(allCardBar);
+            allCards.Add(card);
+        }
+        allPlantPlane.SetActive(true);
+    }
+    public void EndChoosePlant(){
+        allPlantPlane.SetActive(false);
+        isChoosingPlant = false;
+        onCompleteChoosePlant?.Invoke();
     }
     void DoChooseCard(Card _card){
         chosenCard = _card;
@@ -53,6 +79,9 @@ public class CardManager : MonoBehaviour
     }
     void OnCardPointerEnter(Chooseable chooseable){
         Card _card = chooseable as Card;
+        if(isChoosingPlant){
+            _card.infoText.text = LocalData.instance.GetPlantArticle(_card.assetId).sampleInfo;
+        }
         if(_card.isCD || _card.isChosen || !_card.isSunEnough){
             return ;
         }
@@ -60,6 +89,25 @@ public class CardManager : MonoBehaviour
     }
     void OnCardPointerDown(Chooseable chooseable){
         Card _card = chooseable as Card;
+        if(isChoosingPlant){
+            if(_card.transform.parent == cardBar){
+                //TODO:放回
+                foreach(var card in allCards){
+                    if(card.assetId == _card.assetId){
+                        card.EnoughSun(true);
+                    }
+                }
+                cards.Remove(_card);
+                Destroy(_card.gameObject);
+            }
+            else{
+                if(_card.isSunEnough == false || cards.Count >= cardSlotSize) return;
+                //TODO:携带
+                cards.Add(GenerateCard(_card.assetId));
+                _card.EnoughSun(false);
+            }
+            return;
+        }
         if(_card.isCD || !_card.isSunEnough){//CD中或者阳光不够时,无法被选中
             return ;
         }

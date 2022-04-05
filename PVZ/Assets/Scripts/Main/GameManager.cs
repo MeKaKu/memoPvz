@@ -68,11 +68,16 @@ public class GameManager : MonoBehaviour
     void DoChoosePlant(){
         if(cardManager.cardSlotSize < cardManager.cardIds.Count){
             //TODO:ChooseCard
+            cardManager.ShowAllPlant();
+            cardManager.onCompleteChoosePlant += ()=>{
+                StartCoroutine( AnimateEndPreview(.5f) );
+            };
         }
         else{
             cardManager.AutoGenerateCards();
             StartCoroutine( AnimateEndPreview(3) );
         }
+        menuManager.ShowBar();
     }
 
     void StartPlant(){
@@ -81,7 +86,6 @@ public class GameManager : MonoBehaviour
         map.GenerateMap();
         spawner.DelayStartSpawn(10);
         sunManager.StatGenerateSun();
-        menuManager.ShowBar();
     }
 
     void GameOver(){

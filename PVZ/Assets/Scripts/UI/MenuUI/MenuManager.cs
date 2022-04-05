@@ -10,10 +10,10 @@ public class MenuManager : MonoBehaviour
     public Button pauseButton;//暂停按钮
     public GameOverPlane gameOverPlane;//游戏结束UI界面
     public GameWinPlane gameWinPlane;//游戏胜利UI界面
-    public Transform bar;
-    Vector3 originBarPos;
+    public RectTransform bar;
+    Vector2 originBarPos;
     private void Awake() {
-        originBarPos = bar.position;
+        originBarPos = bar.anchoredPosition;
     }
 
     private void Update()
@@ -33,17 +33,17 @@ public class MenuManager : MonoBehaviour
     }
 
     public void HideBar(){
-        StartCoroutine(AnimateBar(3, originBarPos + Vector3.up * 2));
+        StartCoroutine(AnimateBar(3, originBarPos + Vector2.up * 200));
     }
     public void ShowBar(){
         StartCoroutine(AnimateBar(2, originBarPos));
     }
 
-    IEnumerator AnimateBar(float duration, Vector3 to){
+    IEnumerator AnimateBar(float duration, Vector2 to){
         float percent = 0;
         while(percent < 1){
             percent += Time.deltaTime / duration;
-            bar.position = Vector3.Lerp(bar.position, to, percent);
+            bar.anchoredPosition = Vector2.Lerp(bar.anchoredPosition, to, percent);
             yield return null;
         }
     }

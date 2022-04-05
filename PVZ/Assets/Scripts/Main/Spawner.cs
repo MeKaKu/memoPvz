@@ -37,14 +37,22 @@ public class Spawner : MonoBehaviour
     public void StartSpawn(){
         onStartSpawn?.Invoke();
         AudioManager.instance.PlaySound("StartSpawnZombies", Vector3.zero);
+        foreach(var zombie in allZombies){
+            zombie.transform.localPosition += Vector3.left * 30;
+        }
         NextWave();
     }
     public void PreviewZombie(int compressPercent){
+        float sum = 0;
+        foreach(var wave in waves){
+            sum += wave.zombies.Count;
+        }
         foreach(var wave in waves){
             foreach(var zombieInfo in wave.zombies){
                 Zombie zombiePrefab = LocalData.instance.GetZombiePrefab(zombieInfo);
                 Zombie zombie = Instantiate<Zombie>(zombiePrefab, zombiesTrans);
-                zombie.transform.localPosition = new Vector3(rand.Next(10, 13), Random.Range(-n, n + 1), 0);
+                float posY = n - (2f*n*allZombies.Count/sum);
+                zombie.transform.localPosition = new Vector3(Random.Range(9.5f, 12.5f), posY, - posY * .001f + .0005f);
                 allZombies.Add(zombie);
             }
         }
@@ -70,7 +78,7 @@ public class Spawner : MonoBehaviour
                 curPosY = rand.Next(-n, n + 1);
             }
             prePosY = curPosY;
-            newZombie.transform.localPosition = new Vector3(9, curPosY, curPosY * .0001f + .0005f);
+            newZombie.transform.localPosition = new Vector3(9, curPosY, curPosY * .001f + .0005f);
             newZombie.onDeath += OnZombieDead;
             newZombie.onZombieDead += (pos)=>{
                 lastDeadZombiePos = pos;
